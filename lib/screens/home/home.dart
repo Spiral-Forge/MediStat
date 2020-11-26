@@ -2,6 +2,9 @@ import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
 
+import '../authenticate/authenticate.dart';
+import 'homepage.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -34,7 +37,26 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[50],
+      backgroundColor: Colors.blue[50],
+      appBar: AppBar(
+        title:Text("myapp"),
+        backgroundColor:Colors.brown[400] ,
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+            onPressed: () async{
+              await _auth.signOut();
+              Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Authenticate())
+                  );
+            }, 
+            icon: Icon(Icons.person),
+            label:Text('logout')
+            )
+        ],
+      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

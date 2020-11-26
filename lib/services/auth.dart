@@ -1,8 +1,10 @@
 import 'package:dbapp/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService{
   final FirebaseAuth _auth=FirebaseAuth.instance;
+    final GoogleSignIn _googleSignIn=new GoogleSignIn();
 
   //create user object based on firebase user
   User _userFromFireBaseUser(FirebaseUser user){
@@ -25,6 +27,24 @@ class AuthService{
       print(e.toString());
       return null;
     }
+  }
+
+  //sign in with google
+    Future<FirebaseUser> googleSignIn() async{
+      GoogleSignInAccount googleSignInAccount=await _googleSignIn.signIn();
+      GoogleSignInAuthentication gsa=await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: gsa.accessToken,
+        idToken: gsa.idToken,
+      );
+      final AuthResult authResult = await _auth.signInWithCredential(credential);
+      print("auth result is ");
+      print(authResult);
+      FirebaseUser user = authResult.user;
+      print("user name "+user.displayName);
+      return user;
+      
+
   }
 
   //sign in with email and password
@@ -60,6 +80,7 @@ class AuthService{
   //signout
   Future signOut() async{
     try{
+      await _googleSignIn.signOut();
       return await _auth.signOut();
     }catch(e){
       print(e.toString());
