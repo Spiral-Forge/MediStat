@@ -27,6 +27,9 @@ dependencies:
   cloud_firestore: ^0.13.5
   provider: ^3.1.0
   flutter_spinkit: "^4.1.2"
+  hexcolor:
+    
+
 
 dev_dependencies:
   flutter_test:

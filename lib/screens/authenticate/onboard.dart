@@ -1,7 +1,7 @@
 import 'package:dbapp/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
-import 'package:dbapp/screens/authenticate/register.dart';
+import 'package:dbapp/screens/authenticate/registerHospital.dart';
 
 int visibleCard = 1;
 
@@ -73,7 +73,8 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Register()));
+                                         builder: (context) => RegisterForm2())
+                                        );
                               },
                               child: Container(
                                   // height: 40,
