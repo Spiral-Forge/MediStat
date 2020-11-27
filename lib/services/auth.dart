@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dbapp/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -5,10 +6,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService{
   final FirebaseAuth _auth=FirebaseAuth.instance;
     final GoogleSignIn _googleSignIn=new GoogleSignIn();
+    static final Firestore firestore = Firestore.instance;
+
+  static final CollectionReference _userCollection =firestore.collection("users");
 
   //create user object based on firebase user
   User _userFromFireBaseUser(FirebaseUser user){
-    return user!=null ? User(uid:user.uid) : null;
+    return user!=null ? User(uid:user.uid,email:user.email) : null;
   }
 
   //auth change using stream
@@ -41,6 +45,9 @@ class AuthService{
       print("auth result is ");
       print(authResult);
       FirebaseUser user = authResult.user;
+      Map<String,String> userMap;
+      userMap["email"]=user.email;
+      await _userCollection.document(user.uid).setData(userMap);
       print("user name "+user.displayName);
       return user;
       
@@ -54,6 +61,7 @@ class AuthService{
         email: email, 
         password: password
       );
+      
       FirebaseUser user=result.user;
       return _userFromFireBaseUser(user);
     }catch(e){
@@ -69,6 +77,11 @@ class AuthService{
         email: email, 
         password: password
       );
+      var userDb=new User();
+      userDb.uid=result.user.uid;
+      userDb.email=email;
+      
+      await _userCollection.document(result.user.uid).setData(userDb.toMap(userDb));
       FirebaseUser user=result.user;
       return _userFromFireBaseUser(user);
     }catch(e){
