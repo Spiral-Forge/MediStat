@@ -80,7 +80,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                   padding: EdgeInsets.symmetric(horizontal: 55),
                                   child: Material(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: AppColors.MediBlue,
+                                      color: AppColors.mediBlue,
                                       child: Container(
                                         height: 40,
                                         alignment: Alignment.center,
@@ -109,7 +109,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                   padding: EdgeInsets.symmetric(horizontal: 55),
                                   child: Material(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: AppColors.MediBlue,
+                                      color: AppColors.mediBlue,
                                       child: Container(
                                         height: 40,
                                         alignment: Alignment.center,
@@ -141,7 +141,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                     margin: EdgeInsets.symmetric(vertical: 12),
                                     child: Text("Sign In Here",
                                         style: TextStyle(
-                                            color: AppColors.MediBlue,
+                                            color: AppColors.mediBlue,
                                             fontSize: 14.5,
                                             fontFamily: 'GoogleSans',
                                             decoration:

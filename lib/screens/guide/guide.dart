@@ -1,5 +1,4 @@
-import 'package:dbapp/constant.dart';
-import 'package:dbapp/widgets/my_header.dart';
+import 'package:dbapp/constants/colors.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,11 +19,11 @@ class _GuideState extends State<Guide> {
   }
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    controller.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   void onScroll() {
     setState(() {
@@ -34,52 +33,44 @@ class _GuideState extends State<Guide> {
 
   @override
   Widget build(BuildContext context) {
+    // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
+      // key: _scaffoldKey,
       body: SingleChildScrollView(
         controller: controller,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            MyHeader(
-              // image: "assets/images/coronadrr.jpg",
-              textTop: "Get to know",
-              textBottom: "About Covid-19.",
-              offset: offset,
-            ),
+            // MyHeader(
+            //   // image: "assets/images/coronadrr.jpg",
+            //   textTop: "Get to know",
+            //   textBottom: "About Covid-19.",
+            //   offset: offset,
+            // ),
+            // Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  // Text(
-                  //   "Symptoms",
-                  //   style: kTitleTextstyle,
-                  // ),
-                  // SizedBox(height: 20),
-                  // SingleChildScrollView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: <Widget>[
-                  //       SymptomCard(
-                  //         image: "assets/images/headache.png",
-                  //         title: "Headache",
-                  //         isActive: true,
-                  //       ),
-                  //       SymptomCard(
-                  //         image: "assets/images/caugh.png",
-                  //         title: "Caugh",
-                  //       ),
-                  //       SymptomCard(
-                  //         image: "assets/images/fever.png",
-                  //         title: "Fever",
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  SizedBox(height: 20),
-                  Text("Prevention", style: kTitleTextstyle),
-                  SizedBox(height: 20),
+              padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),
+              child: Row(children: [
+                IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      // _scaffoldKey.currentState.openDrawer();
+                    }),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                  child: Text(
+                    "Medical Guide",
+                    style: kTitleTextstyle,
+                  ),
+                )
+              ]),
+            ),
+            SizedBox(height: 20),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(children: [
                   PreventCard(
                     text:
                         "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
@@ -92,28 +83,26 @@ class _GuideState extends State<Guide> {
                     image: "assets/images/wash_hands.png",
                     title: "Wash your hands",
                   ),
-                   PreventCard(
+                  PreventCard(
                     text:
                         "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
                     image: "assets/images/wear_mask.png",
                     title: "Wear face mask",
                   ),
-                   PreventCard(
+                  PreventCard(
                     text:
                         "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
                     image: "assets/images/wash_hands.png",
                     title: "Wash your hands",
                   ),
-                   PreventCard(
+                  PreventCard(
                     text:
                         "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
                     image: "assets/images/wear_mask.png",
                     title: "Wear face mask",
                   ),
                   SizedBox(height: 50),
-                ],
-              ),
-            )
+                ]))
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:dbapp/screens/home/guide.dart';
+import 'package:dbapp/screens/guide/guide.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
@@ -29,8 +29,6 @@ class _HomeState extends State<Home> {
     });
   }
 
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +48,7 @@ class _HomeState extends State<Home> {
             title: Text('Guide'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_hospital),
+            icon: Icon(Icons.place),
             title: Text('Near Me'),
           ),
         ],

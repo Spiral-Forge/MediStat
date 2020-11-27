@@ -7,27 +7,16 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-_makingPhoneCall() async { 
-  const url = 'tel:102'; 
-  if (await canLaunch(url)) { 
-    await launch(url); 
-  } else { 
-    throw 'Could not launch $url'; 
-  } 
-} 
+_makingPhoneCall() async {
+  const url = 'tel:102';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 class _HomePageState extends State<HomePage> {
-  // var themeFlag = false;
-  // final FirebaseAuth _authUser = FirebaseAuth.instance;
-  // bool loading = true;
-  // String post;
-  // bool postFlag = false;
-  // static List<dynamic> peerID = [];
-  // List fixedList = Iterable<int>.generate(peerID.length).toList();
-  // Future<FirebaseUser> getCurrentUser() {
-  //   return _authUser.currentUser();
-  // }
-
   void initState() {
     super.initState();
   }
@@ -57,46 +46,110 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
                   child: Text(
                     "MediStat",
-                    style: TextStyle(fontFamily: 'GoogleSans', fontSize: 23),
+                    style: kTitleTextstyle,
                   ),
                 )
               ]),
             ),
             SizedBox(
-              height: 90,
+              height: 50,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkResponse(
-                    onTap: () => print("coolcoolcool"),
-                    child: Container(
-                      width: 250,
-                      height: 250,
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      // width: MediaQuery.of(context).size.height / 2,
+                      height: MediaQuery.of(context).size.height / 3,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: AppColors.MediBlue),
-                      child: Center(
-                        child: Text(
-                          "Get instant help",
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                          shape: BoxShape.circle,
+                          color: AppColors.mediBlue.withOpacity(0.3)),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height / 6 -
+                          MediaQuery.of(context).size.height / 6.6,
+                      left: MediaQuery.of(context).size.width / 2 -
+                          MediaQuery.of(context).size.height / 6.6,
+                      child: Container(
+                        width: MediaQuery.of(context).size.height / 3.3,
+                        height: MediaQuery.of(context).size.height / 3.3,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.mediBlue.withOpacity(0.7)),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height / 6 -
+                          MediaQuery.of(context).size.height / 7.4,
+                      left: MediaQuery.of(context).size.width / 2 -
+                          MediaQuery.of(context).size.height / 7.4,
+                      child: InkResponse(
+                        onTap: () => print("coolcoolcool"),
+                        child: Container(
+                          width: MediaQuery.of(context).size.height / 3.7,
+                          height: MediaQuery.of(context).size.height / 3.7,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.mediBlue),
+                          child: Center(
+                            child: Text("Get instant help",
+                                style: kHeadingTextStyle
+                                // TextStyle(color: Colors.white, fontSize: 24),
+                                ),
+                          ),
                         ),
                       ),
-                    )),
+                    )
+                  ],
+                ),
                 SizedBox(height: 40),
-                InkResponse(
-                    onTap: () => _makingPhoneCall(),
-                    child: Container(
-                      width: 250,
-                      height: 250,
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      // width: MediaQuery.of(context).size.height / 2,
+                      height: MediaQuery.of(context).size.height / 3,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: AppColors.MediBlue),
-                      child: Center(
-                        child: Text(
-                          "Call an ambulance",
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                          shape: BoxShape.circle,
+                          color: AppColors.mediBlue.withOpacity(0.3)),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height / 6 -
+                          MediaQuery.of(context).size.height / 6.6,
+                      left: MediaQuery.of(context).size.width / 2 -
+                          MediaQuery.of(context).size.height / 6.6,
+                      child: Container(
+                        width: MediaQuery.of(context).size.height / 3.3,
+                        height: MediaQuery.of(context).size.height / 3.3,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.mediBlue.withOpacity(0.7)),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height / 6 -
+                          MediaQuery.of(context).size.height / 7.4,
+                      left: MediaQuery.of(context).size.width / 2 -
+                          MediaQuery.of(context).size.height / 7.4,
+                      child: InkResponse(
+                        onTap: () => _makingPhoneCall(),
+                        child: Container(
+                          width: MediaQuery.of(context).size.height / 3.7,
+                          height: MediaQuery.of(context).size.height / 3.7,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.mediBlue),
+                          child: Center(
+                            child: Text("Call an ambulance",
+                                style: kHeadingTextStyle
+                                // TextStyle(color: Colors.white, fontSize: 24),
+                                ),
+                          ),
                         ),
                       ),
-                    )),
+                    )
+                  ],
+                ),
               ],
             )
           ]),

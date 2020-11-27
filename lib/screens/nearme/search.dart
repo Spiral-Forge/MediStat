@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
+import 'package:dbapp/constants/colors.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -30,6 +31,16 @@ class Search extends StatelessWidget {
                                 currentPosition.longitude),
                             zoom: 16.0),
                         zoomGesturesEnabled: true,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                      child: Text(
+                        "Hospitals around you",
+                        style: kTitleTextstyle,
                       ),
                     ),
                     SizedBox(
