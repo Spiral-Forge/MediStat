@@ -78,7 +78,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                         builder: (context) => UserAuthHandler())
+                                         builder: (context) => RegisterForm2())
                                         );
                               },
                               child: Container(

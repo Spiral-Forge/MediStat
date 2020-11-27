@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:dbapp/constants/colors.dart';
+import 'package:dbapp/models/hospital.dart';
 import 'package:dbapp/screens/vc/call_utilities.dart';
+import 'package:dbapp/screens/vc/dbutils.dart';
 import 'package:dbapp/screens/vc/permissions.dart';
 import 'package:dbapp/screens/vc/pickuplayout.dart';
 import 'package:dbapp/screens/vc/user.dart';
@@ -23,20 +27,37 @@ class _HomePageState extends State<HomePage> {
   // Future<FirebaseUser> getCurrentUser() {
   //   return _authUser.currentUser();
   // }
-
+  DBUtils db=new DBUtils();
   
   
  var sender = new User();
-  var receiver=new User();
+  var receiver=new  User();
   void initState() {
     super.initState();
+    initialize();
+   
+  }
+  initialize() async{
+     var receiverList=await db.getReceiver();
+    int num=Random().nextInt(receiverList.length);
+
+    var senderInfo=await db.getSender();
+    print("sender info");
+    print(senderInfo.uid);
+
+    // sender=db.getSender();
+    // receiver=db.getReceiver();
     
-    sender.uid = "IWnC5PK8SnMvjQnYFamZBFEkn512";
-    sender.email = "suhanichawla2000@gmail.com";
+    sender.uid = senderInfo.uid;
+    sender.email = senderInfo.email;
 
    
-    receiver.uid = "AliorEqHmpe4uu8MEO0zAveM4qE3";
-    receiver.email = "suhanichawla200@gmail.com";
+    
+    print("receiver");
+    print(receiverList[num].data["uid"]);
+    receiver.uid = receiverList[num].data["uid"];
+    receiver.email = receiverList[num].data["email"];
+
   }
 
   @override
@@ -77,14 +98,18 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkResponse(
-                      onTap:() async =>
-                await Permissions.cameraAndMicrophonePermissionsGranted()
-                    ? CallUtils.dial(
-                        from: sender,
-                        to: receiver,
-                        context: context,
-                      )
-                    : {},
+                      onTap:() async {
+                         bool permission = await Permissions.cameraAndMicrophonePermissionsGranted();
+                         if(permission){
+                           return CallUtils.dial(
+                              from: sender,
+                              to: receiver,
+                              context: context,
+                            );
+                         }else{
+                           return {};
+                         }
+                      },
                       child: Container(
                         width: 250,
                         height: 250,

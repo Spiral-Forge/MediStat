@@ -1,4 +1,5 @@
 import 'package:dbapp/screens/constants/colors.dart';
+import 'package:dbapp/screens/home/home.dart';
 // import 'package:dbapp/lib/screens/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
@@ -7,13 +8,15 @@ import 'package:dbapp/services/auth.dart';
 // import 'package:dbapp/screens/authenticate/form3.dart';
 
 String name = '';
-String phoneNo = '';
+String contact = '';
 String email = '';
 String password = '';
+String address='';
+
 
 class RegisterForm2 extends StatefulWidget {
   //taken from parent props:
-  Map<String, dynamic> userMap;
+  var userMap = new Map<String, dynamic>();
   Function toggleView;
   RegisterForm2( {this.toggleView});
 
@@ -25,6 +28,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
   final Map<String, dynamic> userMap;
   _RegisterForm2State(this.userMap);
   final _formKey2 = GlobalKey<FormState>();
+  final AuthService _auth=AuthService();
 
   String error = '';
   bool loading = false;
@@ -33,9 +37,11 @@ class _RegisterForm2State extends State<RegisterForm2> {
     super.initState();
     setState(() {
       name = '';
-      phoneNo = '';
+      contact = '';
       email = '';
       password = '';
+      address='';
+
     });
   }
 
@@ -149,7 +155,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               return null;
                                             },
                                             onChanged: (val) {
-                                              setState(() => phoneNo = val);
+                                              setState(() => contact = val);
                                             }),
                                         TextFormField(
                                             keyboardType:
@@ -184,6 +190,40 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               setState(() => email = val);
                                             }),
 
+                                            TextFormField(
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            decoration: const InputDecoration(
+                                              labelStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontFamily: 'GoogleSans'),
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey),
+                                              ),
+                                              focusedBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.blue),
+                                              ),
+                                              border: UnderlineInputBorder(),
+                                              icon: const Icon(Icons.lock),
+                                              labelText: 'Hospital Password',
+                                            ),
+                                            obscureText: true,
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return 'Required';
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (val) {
+                                              setState(() => password = val);
+                                            }),
+
                                              TextFormField(
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -214,7 +254,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               return null;
                                             },
                                             onChanged: (val) {
-                                              setState(() => email = val);
+                                              setState(() => address = val);
                                             }),
 
                                         // TextFormField(
@@ -271,15 +311,26 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                       if (_formKey2.currentState
                                                           .validate()) {
                                                         setState(() {
-                                                          userMap['name'] =
-                                                              name;
-                                                          userMap['phoneNo'] =
-                                                              phoneNo;
+                                                          widget.userMap['name'] =name;
+                                                          userMap['contact'] =
+                                                              contact;
+                                                          userMap['address'] =
+                                                              address;
                                                           userMap['email'] =
                                                               email;
                                                           userMap['password'] =
                                                               password;
                                                         });
+                                                        var user=await _auth.registerHospital(userMap);
+                                                        if(user!=null){
+                                                          Navigator.pushAndRemoveUntil(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder: (BuildContext context) => Home(),
+                                                              ),
+                                                              (route) => false,
+                                                            );
+                                                        }
                                                         // Navigator.push(
                                                         //     context,
                                                         //     MaterialPageRoute(

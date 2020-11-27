@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dbapp/models/hospital.dart';
 import 'package:dbapp/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -45,8 +46,9 @@ class AuthService{
       print("auth result is ");
       print(authResult);
       FirebaseUser user = authResult.user;
-      Map<String,String> userMap;
+      var userMap= new Map<String,String>();
       userMap["email"]=user.email;
+      userMap["uid"]=user.uid;
       await _userCollection.document(user.uid).setData(userMap);
       print("user name "+user.displayName);
       return user;
@@ -80,8 +82,33 @@ class AuthService{
       var userDb=new User();
       userDb.uid=result.user.uid;
       userDb.email=email;
+      userDb.type="user";
       
       await _userCollection.document(result.user.uid).setData(userDb.toMap(userDb));
+      FirebaseUser user=result.user;
+      return _userFromFireBaseUser(user);
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future registerHospital(Map userMap) async{
+    try{
+      print("inside register hospital");
+      AuthResult result=await _auth.createUserWithEmailAndPassword(
+        email: userMap["email"], 
+        password: userMap["password"]
+      );
+      var hospital=new Hospital();
+      hospital.uid=result.user.uid;
+      hospital.email=userMap["email"];
+      hospital.type="hospital";
+      hospital.name=userMap["name"];
+      hospital.address=userMap["address"];
+      hospital.contact=userMap["contact"];
+      
+      await _userCollection.document(result.user.uid).setData(hospital.toMap(hospital));
       FirebaseUser user=result.user;
       return _userFromFireBaseUser(user);
     }catch(e){
