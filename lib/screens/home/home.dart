@@ -1,6 +1,8 @@
 import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
+import 'package:dbapp/screens/home/guide.dart';
+
 
 import '../authenticate/authenticate.dart';
 import 'homepage.dart';
@@ -15,12 +17,10 @@ class _HomeState extends State<Home> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+      Guide(),
+    
     Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
+      'Index 2: Schoool',
       style: optionStyle,
     ),
   ];
