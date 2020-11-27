@@ -145,7 +145,7 @@ class _UserLoginState extends State<UserLogin> {
                                   color: new Color(0xff0350C2),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.g_translate_rounded,color: Colors.white,),
+                                      Icon(Icons.email,color: Colors.white,),
                                       Text(
                                         ' Sign In With Google',
                                         style: TextStyle(

@@ -158,7 +158,7 @@ class _UserRegisterState extends State<UserRegister> {
                                   color: new Color(0xff0350C2),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.g_translate_rounded,color: Colors.white,),
+                                      Icon(Icons.email,color: Colors.white,),
                                       Text(
                                         ' Sign In With Google',
                                         style: TextStyle(
