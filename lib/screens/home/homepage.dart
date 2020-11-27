@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   
   
  var sender = new User();
-  var receiver=new  User();
+  var receivers=new  List<User>();
   void initState() {
     super.initState();
     initialize();
@@ -39,8 +39,9 @@ class _HomePageState extends State<HomePage> {
   }
   initialize() async{
      var receiverList=await db.getReceiver();
-    int num=Random().nextInt(receiverList.length);
-
+    //int num=Random().nextInt(receiverList.length);
+    print("receiver list from db");
+    print(receiverList[0].data);
     var senderInfo=await db.getSender();
     print("sender info");
     print(senderInfo.uid);
@@ -51,12 +52,21 @@ class _HomePageState extends State<HomePage> {
     sender.uid = senderInfo.uid;
     sender.email = senderInfo.email;
 
-   
-    
-    print("receiver");
-    print(receiverList[num].data["uid"]);
-    receiver.uid = receiverList[num].data["uid"];
-    receiver.email = receiverList[num].data["email"];
+    for(int i=0;i<5 || receiverList.length;i++){
+      print("coming in for i= "+i.toString());
+      var currReceiver=new User();
+      currReceiver.uid = receiverList[i].data["uid"];
+      currReceiver.email = receiverList[i].data["email"];
+      receivers.add(currReceiver);
+      // print("receiver[i] is ");
+      // print(receivers[i]);
+    }
+    print("reciever list fro initsate");
+    print(receiverList);
+    // print("receiver");
+    // print(receiverList[num].data["uid"]);
+    // receiver.uid = receiverList[num].data["uid"];
+    // receiver.email = receiverList[num].data["email"];
 
   }
 
@@ -103,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                          if(permission){
                            return CallUtils.dial(
                               from: sender,
-                              to: receiver,
+                              to: receivers,
                               context: context,
                             );
                          }else{
