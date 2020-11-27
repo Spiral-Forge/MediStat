@@ -1,10 +1,20 @@
 import 'package:dbapp/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
+_makingPhoneCall() async { 
+  const url = 'tel:102'; 
+  if (await canLaunch(url)) { 
+    await launch(url); 
+  } else { 
+    throw 'Could not launch $url'; 
+  } 
+} 
 
 class _HomePageState extends State<HomePage> {
   // var themeFlag = false;
@@ -74,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                     )),
                 SizedBox(height: 40),
                 InkResponse(
-                    onTap: () => print("pewpewpew"),
+                    onTap: () => _makingPhoneCall(),
                     child: Container(
                       width: 250,
                       height: 250,

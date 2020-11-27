@@ -1,3 +1,4 @@
+import 'package:dbapp/screens/home/guide.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
@@ -13,10 +14,11 @@ class _HomeState extends State<Home> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    Guide(),
+    // Text(
+    //   'Index 1: Business',
+    //   style: optionStyle,
+    // ),
     NearMe(),
   ];
   int _selectedIndex = 0;
