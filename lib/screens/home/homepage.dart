@@ -1,21 +1,10 @@
 import 'package:dbapp/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart'; 
-import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
-_makingPhoneCall() async { 
-  const url = 'tel:102'; 
-  if (await canLaunch(url)) { 
-    await launch(url); 
-  } else { 
-    throw 'Could not launch $url'; 
-  } 
-} 
 
 class _HomePageState extends State<HomePage> {
   // var themeFlag = false;
@@ -64,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               ]),
             ),
             SizedBox(
-              height: 50,
+              height: 90,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -84,11 +73,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )),
                 SizedBox(height: 40),
-
-                RaisedButton(
-                 onPressed: _makingPhoneCall, 
-                //  InkResponse(
-                //     onTap: () => print("pewpewpew"),
+                InkResponse(
+                    onTap: () => print("pewpewpew"),
                     child: Container(
                       width: 250,
                       height: 250,
@@ -100,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(color: Colors.white, fontSize: 24),
                         ),
                       ),
-                  )),
+                    )),
               ],
             )
           ]),

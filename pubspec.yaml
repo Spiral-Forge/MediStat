@@ -26,10 +26,14 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_auth:
   cloud_firestore: ^0.13.5
-  provider: ^3.1.0
   flutter_spinkit: "^4.1.2"
   google_sign_in: ^4.5.6
   hexcolor:
+  google_maps_flutter:
+  geolocator:
+  http:
+  flutter_rating_bar:
+  provider: ^4.3.2+2
   
     
 
