@@ -1,16 +1,11 @@
-import 'package:dbapp/screens/authenticate/signin.dart';
-import 'package:dbapp/screens/authenticate/register.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
 import 'package:dbapp/screens/vc/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:dbapp/shared/constants.dart';
 import 'package:dbapp/shared/loading.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../home/home.dart';
-
 
 class UserLogin extends StatefulWidget {
   final Function toggleView;
@@ -20,13 +15,13 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
-  final AuthService _auth=AuthService();
-   final _formKey=GlobalKey<FormState>();
-  bool loading=false;
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  bool loading = false;
   //form state
-  String email='';
-  String password='';
-  String error='';
+  String email = '';
+  String password = '';
+  String error = '';
   @override
   void initState() {
     super.initState();
@@ -66,8 +61,7 @@ class _UserLoginState extends State<UserLogin> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8)),
                                           borderSide: BorderSide(
-                                              color:
-                                                  new Color(0xff0350C2)))),
+                                              color: new Color(0xff0350C2)))),
                                   validator: (val) =>
                                       val.isEmpty ? 'Enter an email' : null,
                                   onChanged: (val) {
@@ -84,8 +78,7 @@ class _UserLoginState extends State<UserLogin> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8)),
                                           borderSide: BorderSide(
-                                              color:
-                                                  new Color(0xff0350C2)))),
+                                              color: new Color(0xff0350C2)))),
                                   obscureText: true,
                                   onChanged: (val) {
                                     setState(() => password = val);
@@ -108,41 +101,44 @@ class _UserLoginState extends State<UserLogin> {
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'GoogleSans'),
                                   ),
-                                   onPressed: () async{
-                                    if(_formKey.currentState.validate()){
-                                          setState(() {
-                                            loading=true;
-                                          });
-                                          
-                                          dynamic result=await _auth.signin(email, password);
-                                          if(result == null){
-                                              setState(() {
-                                                error='couldnt sign in ';
-                                                loading=false;
-                                              });
-                                          }else{
-                                            AuthMethods auth=new AuthMethods();
-                                            var userDetails=await auth.getUserDetails();
-                                            if(userDetails.type=="user"){
-                                                      Navigator.pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (BuildContext context) => Home(),
-                                                ),
-                                                (route) => false,
-                                              );
-                                            }else{
-                                               Navigator.pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (BuildContext context) => HospitalHome(),
-                                                ),
-                                                (route) => false,
-                                              );
-                                            }
-                                             
-                                          }
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      setState(() {
+                                        loading = true;
+                                      });
+
+                                      dynamic result =
+                                          await _auth.signin(email, password);
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'couldnt sign in ';
+                                          loading = false;
+                                        });
+                                      } else {
+                                        AuthMethods auth = new AuthMethods();
+                                        var userDetails =
+                                            await auth.getUserDetails();
+                                        if (userDetails.type == "user") {
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Home(),
+                                            ),
+                                            (route) => false,
+                                          );
+                                        } else {
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  HospitalHome(),
+                                            ),
+                                            (route) => false,
+                                          );
+                                        }
                                       }
+                                    }
                                   },
                                 ),
                               ),
@@ -152,45 +148,47 @@ class _UserLoginState extends State<UserLogin> {
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 50),
                                 child: MaterialButton(
-                                  minWidth: double.infinity,
-                                  height: 48,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
-                                  color: new Color(0xff0350C2),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.g_translate_rounded,color: Colors.white,),
-                                      Text(
-                                        ' Sign In With Google',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'GoogleSans'),
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () async{                                
-                                    dynamic user=await _auth.googleSignIn();
-                                    if(user == null){
-                                      setState(() {
-                                        error='couldnt sign up ';
-                                        loading=false;
-                                      });
-                                    }else{
-                                      print("going from here");
-                                      Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) => Home(),
+                                    minWidth: double.infinity,
+                                    height: 48,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                    color: new Color(0xff0350C2),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.email,
+                                          color: Colors.white,
                                         ),
-                                        (route) => false,
-                                      );
-                                     
-                                    }
-                                  }
-                                ),
+                                        Text(
+                                          ' Sign In With Google',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w600,
+                                              fontFamily: 'GoogleSans'),
+                                        ),
+                                      ],
+                                    ),
+                                    onPressed: () async {
+                                      dynamic user = await _auth.googleSignIn();
+                                      if (user == null) {
+                                        setState(() {
+                                          error = 'couldnt sign up ';
+                                          loading = false;
+                                        });
+                                      } else {
+                                        print("going from here");
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Home(),
+                                          ),
+                                          (route) => false,
+                                        );
+                                      }
+                                    }),
                               ),
                               SizedBox(height: 10.0),
                               Row(
@@ -223,8 +221,7 @@ class _UserLoginState extends State<UserLogin> {
                               Text(error,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 14.0))
+                                      color: Colors.red, fontSize: 14.0))
                             ],
                           ),
                         ),
@@ -233,5 +230,4 @@ class _UserLoginState extends State<UserLogin> {
                   ),
                 )));
   }
-
 }

@@ -1,5 +1,3 @@
-import 'package:dbapp/screens/authenticate/signin.dart';
-import 'package:dbapp/screens/authenticate/onboard.dart';
 import 'package:dbapp/screens/home/home.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
 import 'package:dbapp/screens/vc/miniauth.dart';
@@ -12,34 +10,34 @@ class HomeHandler extends StatefulWidget {
 }
 
 class _HomeHandlerState extends State<HomeHandler> {
-
   bool hospital;
   @override
   void initState() {
     initialize();
     super.initState();
   }
-  initialize() async{
-    AuthMethods auth=new AuthMethods();
-    var user= await auth.getUserDetails();
+
+  initialize() async {
+    AuthMethods auth = new AuthMethods();
+    var user = await auth.getUserDetails();
     // print("user type");
     // print(user.type);
-    if(user.type=="user"){
+    if (user.type == "user") {
       setState(() {
-        hospital=false;
+        hospital = false;
       });
-    }else{
+    } else {
       setState(() {
-        hospital=true;
+        hospital = true;
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    if(hospital==null){
+    if (hospital == null) {
       return Loading();
-    }
-    else if (hospital) {
+    } else if (hospital) {
       return HospitalHome();
     } else {
       return Home();

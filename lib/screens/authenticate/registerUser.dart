@@ -1,30 +1,25 @@
-import 'package:dbapp/screens/authenticate/signin.dart';
-import 'package:dbapp/screens/authenticate/register.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:dbapp/shared/constants.dart';
 import 'package:dbapp/shared/loading.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../home/home.dart';
 
-
 class UserRegister extends StatefulWidget {
-   final Function toggleView;
-    UserRegister({this.toggleView});
+  final Function toggleView;
+  UserRegister({this.toggleView});
   @override
   _UserRegisterState createState() => _UserRegisterState();
 }
 
 class _UserRegisterState extends State<UserRegister> {
-  final AuthService _auth=AuthService();
-   final _formKey=GlobalKey<FormState>();
-  bool loading=false;
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  bool loading = false;
   //form state
-  String email='';
-  String password='';
-  String error='';
+  String email = '';
+  String password = '';
+  String error = '';
   @override
   void initState() {
     super.initState();
@@ -76,8 +71,7 @@ class _UserRegisterState extends State<UserRegister> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8)),
                                           borderSide: BorderSide(
-                                              color:
-                                                  new Color(0xff0350C2)))),
+                                              color: new Color(0xff0350C2)))),
                                   validator: (val) =>
                                       val.isEmpty ? 'Enter an email' : null,
                                   onChanged: (val) {
@@ -94,8 +88,7 @@ class _UserRegisterState extends State<UserRegister> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8)),
                                           borderSide: BorderSide(
-                                              color:
-                                                  new Color(0xff0350C2)))),
+                                              color: new Color(0xff0350C2)))),
                                   obscureText: true,
                                   onChanged: (val) {
                                     setState(() => password = val);
@@ -118,30 +111,31 @@ class _UserRegisterState extends State<UserRegister> {
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'GoogleSans'),
                                   ),
-                                  onPressed: () async{
-                                    if(_formKey.currentState.validate()){
-                                          setState(() {
-                                            loading=true;
-                                          });
-                                          
-                                          dynamic result=await _auth.register(email, password);
-                                          if(result == null){
-                                              setState(() {
-                                                error='couldnt sign up ';
-                                                loading=false;
-                                              });
-                                          }else{
-                                      Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) => Home(),
-                                        ),
-                                        (route) => false,
-                                      );
-                                    }
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      setState(() {
+                                        loading = true;
+                                      });
+
+                                      dynamic result =
+                                          await _auth.register(email, password);
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'couldnt sign up ';
+                                          loading = false;
+                                        });
+                                      } else {
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Home(),
+                                          ),
+                                          (route) => false,
+                                        );
                                       }
+                                    }
                                   },
-                                  
                                 ),
                               ),
                               SizedBox(height: 15),
@@ -158,7 +152,10 @@ class _UserRegisterState extends State<UserRegister> {
                                   color: new Color(0xff0350C2),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.g_translate_rounded,color: Colors.white,),
+                                      Icon(
+                                        Icons.email,
+                                        color: Colors.white,
+                                      ),
                                       Text(
                                         ' Sign In With Google',
                                         style: TextStyle(
@@ -169,24 +166,23 @@ class _UserRegisterState extends State<UserRegister> {
                                       ),
                                     ],
                                   ),
-                                   onPressed: () async{                                
-                                    dynamic user=await _auth.googleSignIn();
-                                    if(user == null){
+                                  onPressed: () async {
+                                    dynamic user = await _auth.googleSignIn();
+                                    if (user == null) {
                                       setState(() {
-                                        error='couldnt sign up ';
-                                        loading=false;
+                                        error = 'couldnt sign up ';
+                                        loading = false;
                                       });
-                                    }else{
-                                      
+                                    } else {
                                       Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (BuildContext context) => Home(),
+                                          builder: (BuildContext context) =>
+                                              Home(),
                                         ),
                                         (route) => false,
                                       );
                                     }
-                                    
                                   },
                                 ),
                               ),
@@ -221,8 +217,7 @@ class _UserRegisterState extends State<UserRegister> {
                               Text(error,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 14.0))
+                                      color: Colors.red, fontSize: 14.0))
                             ],
                           ),
                         ),
@@ -253,7 +248,7 @@ class _UserRegisterState extends State<UserRegister> {
   //     body: Container(
   //       padding: EdgeInsets.symmetric(vertical:20.0,horizontal:50.0),
   //         child:Form(
-  //           key:_formKey, 
+  //           key:_formKey,
   //                     child: Column(
   //             children: <Widget>[
   //               SizedBox(height:20.0),
@@ -284,7 +279,7 @@ class _UserRegisterState extends State<UserRegister> {
   //                   style: TextStyle(color:Colors.white),
   //                   ),
   //                   onPressed: () async{
-  //                    
+  //
   //                            print("user isss before");
   //                           dynamic user=await _auth.googleSignIn();
   //                           print("user isss");
@@ -307,6 +302,6 @@ class _UserRegisterState extends State<UserRegister> {
   //         )
 
   //     );
-    
- // }
+
+  // }
 }

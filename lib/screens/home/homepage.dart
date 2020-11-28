@@ -1,11 +1,7 @@
-import 'dart:math';
-import 'package:dbapp/screens/constants/colors.dart';
-import 'package:dbapp/models/hospital.dart';
 import 'package:dbapp/screens/constants/colors.dart';
 import 'package:dbapp/screens/vc/call_utilities.dart';
 import 'package:dbapp/screens/vc/dbutils.dart';
 import 'package:dbapp/screens/vc/permissions.dart';
-import 'package:dbapp/screens/vc/pickuplayout.dart';
 import 'package:dbapp/screens/vc/user.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

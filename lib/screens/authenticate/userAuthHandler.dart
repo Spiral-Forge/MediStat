@@ -1,7 +1,5 @@
 import 'package:dbapp/screens/authenticate/loginUser.dart';
 import 'package:dbapp/screens/authenticate/registerUser.dart';
-import 'package:dbapp/screens/authenticate/signin.dart';
-import 'package:dbapp/screens/authenticate/onboard.dart';
 import 'package:flutter/material.dart';
 
 class UserAuthHandler extends StatefulWidget {

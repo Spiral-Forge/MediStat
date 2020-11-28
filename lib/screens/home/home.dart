@@ -1,9 +1,6 @@
-import 'package:dbapp/models/user.dart';
-import 'package:dbapp/screens/vc/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
-import 'package:provider/provider.dart';
 import 'package:dbapp/screens/guide/guide.dart';
 import 'package:dbapp/screens/nearme/nearme.dart';
 import '../authenticate/authenticate.dart';

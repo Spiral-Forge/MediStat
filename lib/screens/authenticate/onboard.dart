@@ -1,12 +1,9 @@
-import 'package:dbapp/screens/authenticate/registerUser.dart';
 import 'package:dbapp/screens/authenticate/userAuthHandler.dart';
 import 'package:dbapp/screens/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
 // ignore: unused_import
 import 'package:dbapp/screens/authenticate/registerHospital.dart';
-
-import 'authenticate.dart';
 
 int visibleCard = 1;
 
