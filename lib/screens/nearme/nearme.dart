@@ -11,7 +11,7 @@ class NearMe extends StatelessWidget {
   final placesService = PlacesService();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MultiProvider(
       providers: [
         FutureProvider(create: (context) => locatorService.getLocation()),

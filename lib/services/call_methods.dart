@@ -1,0 +1,66 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../models/call.dart';
+
+class CallMethods {
+  final CollectionReference callCollection =Firestore.instance.collection("call");
+
+  Stream<DocumentSnapshot> callStream({String uid}) =>
+      callCollection.document(uid).snapshots();
+
+  Future<bool> makeCall({Call call}) async {
+    try {
+
+
+      call.hasDialled = false;
+      Map<String, dynamic> hasNotDialledMap = call.toMap(call);
+      // print("has dialed map");
+      // print(hasDialledMap);
+      // print("has not dialed map");
+      // print(hasNotDialledMap);
+
+      await callCollection.document(call.receiverId).setData(hasNotDialledMap);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> endCall({Call call}) async {
+    try {
+      await callCollection.document(call.callerId).delete();
+      await callCollection.document(call.receiverId).delete();
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> saveSender(Call call) async{
+    try{
+       call.hasDialled = true;
+        Map<String, dynamic> hasDialledMap = call.toMap(call);
+        await callCollection.document(call.callerId).setData(hasDialledMap);
+        return true;
+
+    }catch(e){
+        print(e);
+        return false;
+    }
+   
+  }
+
+  void callAccepted(Call call) async {
+    await Firestore.instance.collection('call').getDocuments().then((snapshot) {
+      List<DocumentSnapshot> allDocs = snapshot.documents;
+      List<DocumentSnapshot> filteredDocs =  allDocs.where(
+              (document) => document.data["has_dialled"] == false && document.data['caller_id'] == call.callerId && document.data['receiver_id'] != call.receiverId
+      ).toList();
+      for (DocumentSnapshot ds in filteredDocs){
+        ds.reference.delete();
+      }
+    });
+  }
+}

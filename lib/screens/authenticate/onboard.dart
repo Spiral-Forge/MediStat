@@ -1,13 +1,15 @@
-import 'package:dbapp/constants/colors.dart';
+import 'package:dbapp/screens/authenticate/userAuthHandler.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
+// ignore: unused_import
 import 'package:dbapp/screens/authenticate/registerHospital.dart';
 
 int visibleCard = 1;
 
-// String post = '';
+String post = '';
 
-// Map<String, dynamic> userMap = {'type': ''};
+Map<String, dynamic> userMap = {'type': ''};
 
 class RegisterForm1 extends StatefulWidget {
   //taken from parent props:
@@ -27,7 +29,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
   void initState() {
     super.initState();
     setState(() {
-      // post = '';
+      post = '';
     });
   }
 
@@ -67,9 +69,9 @@ class _RegisterForm1State extends State<RegisterForm1> {
                           Column(children: <Widget>[
                             GestureDetector(
                               onTap: () {
-                                // setState(() {
-                                //   userMap['type'] = 'Hospital';
-                                // });
+                                setState(() {
+                                  userMap['type'] = 'Hospital';
+                                });
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -96,14 +98,14 @@ class _RegisterForm1State extends State<RegisterForm1> {
                             SizedBox(height: 10),
                             GestureDetector(
                               onTap: () {
-                                // setState(() {
-                                //   userMap['post'] = 'Hospital';
-                                // });
+                                setState(() {
+                                  userMap['post'] = 'User';
+                                });
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        // builder: (context) => Register()
-                                        ));
+                                        builder: (context) =>
+                                            UserAuthHandler()));
                               },
                               child: Container(
                                   padding: EdgeInsets.symmetric(horizontal: 55),

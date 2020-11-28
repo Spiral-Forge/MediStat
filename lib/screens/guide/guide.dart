@@ -1,6 +1,5 @@
-import 'package:dbapp/constants/colors.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 
 class Guide extends StatefulWidget {
   @override
@@ -47,9 +46,6 @@ class _GuideState extends State<Guide> {
             //   textBottom: "About Covid-19.",
             //   offset: offset,
             // ),
-            // Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: <Widget>[
             Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),
               child: Row(children: [
@@ -172,10 +168,6 @@ class PreventCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Align(
-                    //   alignment: Alignment.topRight,
-                    //   child: SvgPicture.asset("assets/icons/forward.svg"),
-                    // ),
                   ],
                 ),
               ),
