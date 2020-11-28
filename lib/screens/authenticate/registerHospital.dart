@@ -11,14 +11,13 @@ String name = '';
 String contact = '';
 String email = '';
 String password = '';
-String address='';
-
+String address = '';
 
 class RegisterForm2 extends StatefulWidget {
   //taken from parent props:
   var userMap = new Map<String, dynamic>();
   Function toggleView;
-  RegisterForm2( {this.toggleView});
+  RegisterForm2({this.toggleView});
 
   @override
   _RegisterForm2State createState() => _RegisterForm2State(userMap);
@@ -28,7 +27,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
   final Map<String, dynamic> userMap;
   _RegisterForm2State(this.userMap);
   final _formKey2 = GlobalKey<FormState>();
-  final AuthService _auth=AuthService();
+  final AuthService _auth = AuthService();
 
   String error = '';
   bool loading = false;
@@ -40,8 +39,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
       contact = '';
       email = '';
       password = '';
-      address='';
-
+      address = '';
     });
   }
 
@@ -145,7 +143,8 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                 ),
                                                 border: UnderlineInputBorder(),
                                                 icon: const Icon(Icons.phone),
-                                                labelText: 'Hospital Contact No.'),
+                                                labelText:
+                                                    'Hospital Contact No.'),
                                             validator: (value) {
                                               if (value.isEmpty) {
                                                 return 'Required';
@@ -190,7 +189,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               setState(() => email = val);
                                             }),
 
-                                            TextFormField(
+                                        TextFormField(
                                             keyboardType:
                                                 TextInputType.emailAddress,
                                             style:
@@ -224,7 +223,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               setState(() => password = val);
                                             }),
 
-                                             TextFormField(
+                                        TextFormField(
                                             keyboardType:
                                                 TextInputType.emailAddress,
                                             style:
@@ -306,12 +305,13 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                           BorderRadius.circular(
                                                               10.0),
                                                     ),
-                                                    color: AppColors.MediBlue,
+                                                    color: AppColors.mediBlue,
                                                     onPressed: () async {
                                                       if (_formKey2.currentState
                                                           .validate()) {
                                                         setState(() {
-                                                          widget.userMap['name'] =name;
+                                                          widget.userMap[
+                                                              'name'] = name;
                                                           userMap['contact'] =
                                                               contact;
                                                           userMap['address'] =
@@ -321,15 +321,20 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                           userMap['password'] =
                                                               password;
                                                         });
-                                                        var user=await _auth.registerHospital(userMap);
-                                                        if(user!=null){
-                                                          Navigator.pushAndRemoveUntil(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder: (BuildContext context) => Home(),
-                                                              ),
-                                                              (route) => false,
-                                                            );
+                                                        var user = await _auth
+                                                            .registerHospital(
+                                                                userMap);
+                                                        if (user != null) {
+                                                          Navigator
+                                                              .pushAndRemoveUntil(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (BuildContext
+                                                                      context) =>
+                                                                  Home(),
+                                                            ),
+                                                            (route) => false,
+                                                          );
                                                         }
                                                         // Navigator.push(
                                                         //     context,
@@ -339,24 +344,26 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                         //                 userMap)));
                                                       }
                                                     },
-                                                    
                                                     child: Material(
-                                                        borderRadius: BorderRadius.circular(10),
-                                                        color: AppColors.MediBlue,
-                                                         child: Container(
-                                                    child: Text('Register',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontFamily:
-                                                                'GoogleSans',
-                                                            fontSize: 18,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600))),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: AppColors.mediBlue,
+                                                      child: Container(
+                                                          child: Text(
+                                                              'Register',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontFamily:
+                                                                      'GoogleSans',
+                                                                  fontSize: 18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600))),
                                                     )),
                                               ),
-                                                
-                                               
+
                                               //   onPressed: () async {
                                               //   if (_formKey.currentState.validate()) {
                                               //     setState(() {
@@ -372,10 +379,8 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               //     }
                                               //   }
                                               // },
-                                          ]),
-                                          
-                                          
-                                          
+                                            ]),
+
                                         new Divider(
                                             height: 18.0,
                                             color: Colors.transparent),

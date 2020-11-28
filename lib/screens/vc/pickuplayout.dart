@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 import '../../models/user.dart';
 import 'call.dart';
 import 'call_methods.dart';
@@ -18,10 +17,10 @@ class PickupLayout extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final User userProvider = Provider.of<User>(context);
     print("user provider not null");
-    return (userProvider != null )
+    return (userProvider != null)
         ? StreamBuilder<DocumentSnapshot>(
             stream: callMethods.callStream(uid: userProvider.uid),
             builder: (context, snapshot) {

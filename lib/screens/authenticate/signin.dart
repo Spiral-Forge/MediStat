@@ -1,4 +1,4 @@
-import 'package:dbapp/constants/colors.dart';
+import 'package:dbapp/screens/constants/colors.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:dbapp/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.MediLGrey,
+        backgroundColor: AppColors.mediLGrey,
         appBar: AppBar(
           backgroundColor: Colors.brown,
           elevation: 0.0,

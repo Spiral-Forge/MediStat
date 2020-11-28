@@ -19,17 +19,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  url_launcher:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   firebase_auth:
   cloud_firestore: ^0.13.5
-  provider: ^3.1.0
   flutter_spinkit: "^4.1.2"
   google_sign_in: ^4.5.6
   agora_rtc_engine: ^1.0.8
   permission_handler: 3.0.0
+  hexcolor:
+  google_maps_flutter:
+  geolocator:
+  http:
+  flutter_rating_bar:
+  provider: ^4.3.2+2
     
 
 
@@ -50,8 +55,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+   - assets/images/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

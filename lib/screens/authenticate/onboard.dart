@@ -1,6 +1,6 @@
-import 'package:dbapp/constants/colors.dart';
 import 'package:dbapp/screens/authenticate/registerUser.dart';
 import 'package:dbapp/screens/authenticate/userAuthHandler.dart';
+import 'package:dbapp/screens/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
 // ignore: unused_import
@@ -78,15 +78,14 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                         builder: (context) => RegisterForm2())
-                                        );
+                                        builder: (context) => RegisterForm2()));
                               },
                               child: Container(
                                   // height: 40,
                                   padding: EdgeInsets.symmetric(horizontal: 55),
                                   child: Material(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: AppColors.MediBlue,
+                                      color: AppColors.mediBlue,
                                       child: Container(
                                         height: 40,
                                         alignment: Alignment.center,
@@ -108,14 +107,14 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => UserAuthHandler())
-                                        );
+                                        builder: (context) =>
+                                            UserAuthHandler()));
                               },
                               child: Container(
                                   padding: EdgeInsets.symmetric(horizontal: 55),
                                   child: Material(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: AppColors.MediBlue,
+                                      color: AppColors.mediBlue,
                                       child: Container(
                                         height: 40,
                                         alignment: Alignment.center,
@@ -147,7 +146,7 @@ class _RegisterForm1State extends State<RegisterForm1> {
                                     margin: EdgeInsets.symmetric(vertical: 12),
                                     child: Text("Sign In Here",
                                         style: TextStyle(
-                                            color: AppColors.MediBlue,
+                                            color: AppColors.mediBlue,
                                             fontSize: 14.5,
                                             fontFamily: 'GoogleSans',
                                             decoration:

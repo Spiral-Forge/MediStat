@@ -53,13 +53,12 @@ class _CallScreenState extends State<CallScreen> {
     }
 
     await _initAgoraRtcEngine();
-    
+
     _addAgoraEventHandlers();
     await AgoraRtcEngine.enableWebSdkInteroperability(true);
     await AgoraRtcEngine.setParameters(
         '''{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}''');
     await AgoraRtcEngine.joinChannel(null, widget.call.channelId, null, 0);
-    
   }
 
   addPostFrameCallback() {
@@ -260,7 +259,7 @@ class _CallScreenState extends State<CallScreen> {
           child: ListView.builder(
             reverse: true,
             itemCount: _infoStrings.length,
-            itemBuilder: (BuildContext context, int index) {
+            itemBuilder: (context, int index) {
               if (_infoStrings.isEmpty) {
                 return null;
               }
@@ -372,7 +371,7 @@ class _CallScreenState extends State<CallScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
