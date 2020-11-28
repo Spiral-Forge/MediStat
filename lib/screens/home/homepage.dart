@@ -1,8 +1,9 @@
-import 'package:dbapp/screens/constants/colors.dart';
-import 'package:dbapp/screens/vc/call_utilities.dart';
-import 'package:dbapp/screens/vc/dbutils.dart';
-import 'package:dbapp/screens/vc/permissions.dart';
+import 'package:dbapp/shared/colors.dart';
+
+import 'package:dbapp/services/dbutils.dart';
+import 'package:dbapp/services/permissions.dart';
 import 'package:dbapp/screens/vc/user.dart';
+import 'package:dbapp/services/call_utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,11 +27,13 @@ class _HomePageState extends State<HomePage> {
   var sender = new User();
   var receivers = new List<User>();
   void initState() {
+    print("im in init state of homepage");
     super.initState();
     initialize();
   }
 
   initialize() async {
+    print("hello from initialize");
     var receiverList = await db.getReceiver();
     //int num=Random().nextInt(receiverList.length);
     print("receiver list from db");
@@ -44,9 +47,10 @@ class _HomePageState extends State<HomePage> {
 
     sender.uid = senderInfo.uid;
     sender.email = senderInfo.email;
-
-    for (int i = 0; i < 5 && receiverList.length; i++) {
-      print("coming in for i= " + i.toString());
+  print("receiver list len here");
+  print(receiverList.length);
+    for (int i = 0; i < receiverList.length && i<5; i++) {
+      print("coming in for i= " + i.toString()); 
       var currReceiver = new User();
       currReceiver.uid = receiverList[i].data["uid"];
       currReceiver.email = receiverList[i].data["email"];
@@ -55,7 +59,10 @@ class _HomePageState extends State<HomePage> {
       // print(receivers[i]);
     }
     print("reciever list fro initsate");
-    print(receiverList);
+    print(receivers[0]);
+    // setState(() {
+      
+    // });
     // print("receiver");
     // print(receiverList[num].data["uid"]);
     // receiver.uid = receiverList[num].data["uid"];
@@ -130,6 +137,9 @@ class _HomePageState extends State<HomePage> {
                           bool permission = await Permissions
                               .cameraAndMicrophonePermissionsGranted();
                           if (permission) {
+                            print("receivers on ontap");
+                            print(receivers);
+                            print("hiiii");
                             return CallUtils.dial(
                               from: sender,
                               to: receivers,

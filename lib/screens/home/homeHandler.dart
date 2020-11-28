@@ -1,6 +1,6 @@
 import 'package:dbapp/screens/home/home.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
-import 'package:dbapp/screens/vc/miniauth.dart';
+import 'package:dbapp/services/miniauth.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';
 

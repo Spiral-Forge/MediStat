@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'call.dart';
+import '../models/call.dart';
 
 import 'call_methods.dart';
-import 'callscreen.dart';
-import 'user.dart';
+import '../screens/vc/callscreen.dart';
+import '../screens/vc/user.dart';
 
 
 class CallUtils {

@@ -2,15 +2,15 @@ import 'dart:async';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dbapp/screens/vc/user_provider.dart';
+import 'package:dbapp/services/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/user.dart';
-import 'call.dart';
-import 'call_methods.dart';
-import 'configs/agora_configs.dart';
+import '../../models/call.dart';
+import '../../services/call_methods.dart';
+import '../../config/agora_configs.dart';
 
 class CallScreen extends StatefulWidget {
   final Call call;

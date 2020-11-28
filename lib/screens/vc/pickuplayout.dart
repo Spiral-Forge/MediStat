@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/user.dart';
-import 'call.dart';
-import 'call_methods.dart';
+import '../../models/call.dart';
+import '../../services/call_methods.dart';
 import 'pickupscreen.dart';
 
 class PickupLayout extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:dbapp/screens/constants/colors.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/services/auth.dart';
-import 'package:dbapp/shared/constants.dart';
+import 'package:dbapp/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
 

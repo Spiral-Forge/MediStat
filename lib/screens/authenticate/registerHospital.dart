@@ -1,4 +1,4 @@
-import 'package:dbapp/screens/constants/colors.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';

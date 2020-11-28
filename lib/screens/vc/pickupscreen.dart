@@ -1,8 +1,8 @@
-import 'package:dbapp/screens/vc/permissions.dart';
+import 'package:dbapp/services/permissions.dart';
 import 'package:flutter/material.dart';
 
-import 'call.dart';
-import 'call_methods.dart';
+import '../../models/call.dart';
+import '../../services/call_methods.dart';
 import 'callscreen.dart';
 
 

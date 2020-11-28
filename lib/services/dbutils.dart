@@ -24,6 +24,7 @@ class DBUtils{
         .where('type', isEqualTo: "hospital")
         .getDocuments();
         print("res is");
+        print(res.documents);
         return res.documents;
       }
 

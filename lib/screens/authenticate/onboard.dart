@@ -1,5 +1,5 @@
 import 'package:dbapp/screens/authenticate/userAuthHandler.dart';
-import 'package:dbapp/screens/constants/colors.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
 // ignore: unused_import

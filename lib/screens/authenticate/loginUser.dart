@@ -1,7 +1,7 @@
 import 'package:dbapp/screens/home/hospitalHome.dart';
-import 'package:dbapp/screens/vc/miniauth.dart';
+import 'package:dbapp/services/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
-import 'package:dbapp/shared/constants.dart';
+import 'package:dbapp/shared/style.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';
 

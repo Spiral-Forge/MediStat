@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'call.dart';
+import '../models/call.dart';
 
 class CallMethods {
   final CollectionReference callCollection =Firestore.instance.collection("call");
