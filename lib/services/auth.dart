@@ -49,6 +49,7 @@ class AuthService{
       var userMap= new Map<String,String>();
       userMap["email"]=user.email;
       userMap["uid"]=user.uid;
+      userMap["type"]="user";
       await _userCollection.document(user.uid).setData(userMap);
       print("user name "+user.displayName);
       return user;

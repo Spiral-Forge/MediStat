@@ -1,5 +1,7 @@
 import 'package:dbapp/screens/authenticate/signin.dart';
 import 'package:dbapp/screens/authenticate/register.dart';
+import 'package:dbapp/screens/home/hospitalHome.dart';
+import 'package:dbapp/screens/vc/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:dbapp/shared/constants.dart';
 import 'package:dbapp/shared/loading.dart';
@@ -119,13 +121,26 @@ class _UserLoginState extends State<UserLogin> {
                                                 loading=false;
                                               });
                                           }else{
-                                             Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) => Home(),
-                                        ),
-                                        (route) => false,
-                                      );
+                                            AuthMethods auth=new AuthMethods();
+                                            var userDetails=await auth.getUserDetails();
+                                            if(userDetails.type=="user"){
+                                                      Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (BuildContext context) => Home(),
+                                                ),
+                                                (route) => false,
+                                              );
+                                            }else{
+                                               Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (BuildContext context) => HospitalHome(),
+                                                ),
+                                                (route) => false,
+                                              );
+                                            }
+                                             
                                           }
                                       }
                                   },

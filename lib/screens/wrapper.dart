@@ -1,4 +1,5 @@
 import 'package:dbapp/screens/authenticate/authenticate.dart';
+import 'package:dbapp/screens/home/homeHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/home.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ class Wrapper extends StatelessWidget {
     if(user==null){
       return Authenticate();
     }else{
-      return Home();
+      return HomeHandler();
     }
     
   }

@@ -1,7 +1,8 @@
+import 'package:dbapp/models/user.dart';
 import 'package:flutter/widgets.dart';
 
 import 'miniauth.dart';
-import 'user.dart';
+
 
 
 

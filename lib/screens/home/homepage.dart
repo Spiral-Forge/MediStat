@@ -75,8 +75,7 @@ class _HomePageState extends State<HomePage> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
 
-    return PickupLayout(
-        scaffold:  Scaffold(
+        return Scaffold(
         key: _scaffoldKey,
         body: Column(children: [
           Expanded(
@@ -152,7 +151,6 @@ class _HomePageState extends State<HomePage> {
             ]),
           )))
         ]),
-      ),
-    );
+      );
   }
 }
