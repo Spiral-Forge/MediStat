@@ -51,4 +51,16 @@ class CallMethods {
     }
    
   }
+
+  void callAccepted(Call call) async {
+    await Firestore.instance.collection('call').getDocuments().then((snapshot) {
+      List<DocumentSnapshot> allDocs = snapshot.documents;
+      List<DocumentSnapshot> filteredDocs =  allDocs.where(
+              (document) => document.data["has_dialled"] == false && document.data['caller_id'] == call.callerId && document.data['receiver_id'] != call.receiverId
+      ).toList();
+      for (DocumentSnapshot ds in filteredDocs){
+        ds.reference.delete();
+      }
+    });
+  }
 }

@@ -94,15 +94,21 @@ class _PickupScreenState extends State<PickupScreen> {
                     onPressed: () async {
                       isCallMissed = false;
                       // addToLocalStorage(callStatus: CALL_STATUS_RECEIVED);
-                      await Permissions.cameraAndMicrophonePermissionsGranted()
-                          ? Navigator.push(
+                      bool permission=await Permissions.cameraAndMicrophonePermissionsGranted();
+                      if(permission){
+                        await callMethods.callAccepted(widget.call);
+                        Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
                                     CallScreen(call: widget.call),
                               ),
-                            )
-                          : {};
+                            );
+
+                      }else{
+                        return {};
+                      }
+                          
                     }),
               ],
             ),
