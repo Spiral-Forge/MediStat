@@ -1,12 +1,13 @@
 import 'dart:math';
 
+import 'package:dbapp/models/user.dart';
 import 'package:flutter/material.dart';
 
 import '../models/call.dart';
 
 import 'call_methods.dart';
 import '../screens/vc/callscreen.dart';
-import '../screens/vc/user.dart';
+
 
 
 class CallUtils {
@@ -23,7 +24,7 @@ class CallUtils {
         callerId: from.uid,
         callerName: from.email,
         receiverId: to[i].uid,
-        receiverName: to[i].email,
+        receiverName: to[i].name,
         channelId: channelID,
         );
         callList.add(call);

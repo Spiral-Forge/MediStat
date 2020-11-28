@@ -1,3 +1,4 @@
+import 'package:dbapp/screens/authenticate/loginUser.dart';
 import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/screens/home/home.dart';
 import 'package:flutter/material.dart';
@@ -253,38 +254,6 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                             onChanged: (val) {
                                               setState(() => address = val);
                                             }),
-
-                                        // TextFormField(
-                                        //     style:
-                                        //         TextStyle(color: Colors.grey),
-                                        //     decoration: const InputDecoration(
-                                        //       labelStyle: TextStyle(
-                                        //           color: Colors.grey,
-                                        //           fontFamily: 'GoogleSans'),
-                                        //       enabledBorder:
-                                        //           UnderlineInputBorder(
-                                        //         borderSide: BorderSide(
-                                        //             color: Colors.grey),
-                                        //       ),
-                                        //       focusedBorder:
-                                        //           UnderlineInputBorder(
-                                        //         borderSide: BorderSide(
-                                        //             color: Colors.blue),
-                                        //       ),
-                                        //       border: UnderlineInputBorder(),
-                                        //       icon: const Icon(Icons.security),
-                                        //       labelText: 'Password',
-                                        //     ),
-                                        //     validator: (value) {
-                                        //       if (value.length < 6) {
-                                        //         return 'Enter a password 6+ chars long';
-                                        //       }
-                                        //       return null;
-                                        //     },
-                                        //     obscureText: true,
-                                        //     onChanged: (val) {
-                                        //       setState(() => password = val);
-                                        //     }),
                                         new Divider(
                                             height: 35.0,
                                             color: Colors.transparent),
@@ -361,6 +330,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                                           .w600))),
                                                     )),
                                               ),
+                                              
 
                                               //   onPressed: () async {
                                               //   if (_formKey.currentState.validate()) {
@@ -382,6 +352,40 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                         new Divider(
                                             height: 18.0,
                                             color: Colors.transparent),
+                                        Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text('Already Registered? ',
+                                                    style: TextStyle(
+                                                        color: const Color(0xFF959595),
+                                                        fontSize: 14.5,
+                                                        fontFamily: 'GoogleSans')),
+                                                SizedBox(height: 5.0),
+                                                InkWell(
+                                                  onTap: ()=>{
+                                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserLogin()))
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.bottomCenter,
+                                                    margin:
+                                                        EdgeInsets.symmetric(vertical: 12),
+                                                    child: Text("Login Here",
+                                                        style: TextStyle(
+                                                            fontFamily: 'GoogleSans',
+                                                            color: new Color(0xff0350C2),
+                                                            fontSize: 14.5,
+                                                            decoration:
+                                                                TextDecoration.underline)),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(height: 5.0),
+                                            Text(error,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.red, fontSize: 14.0)
+                                            )
                                       ])),
                                 )))
                               ]))))
