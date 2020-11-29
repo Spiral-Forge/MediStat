@@ -2,14 +2,12 @@ class User {
   String uid;
   String email;
   String type;
-  String contact;
   String name;
 
   User({
     this.uid,
     this.email,
     this.type,
-    this.contact,
     this.name
   });
 
@@ -19,7 +17,6 @@ class User {
     data['email'] = user.email;
     data['type']=user.type;
     data['name']=user.name;
-    data['contact']=user.contact;
     return data;
   }
 
@@ -29,6 +26,5 @@ class User {
     this.email = mapData['email'];
     this.type=mapData["type"];
     this.name=mapData["name"];
-    this.contact=mapData["contact"];
   }
 }
