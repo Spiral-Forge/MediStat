@@ -46,10 +46,15 @@ class AuthService{
       print("auth result is ");
       print(authResult);
       FirebaseUser user = authResult.user;
+      print("user on google sign in");
+      print(user);
       var userMap= new Map<String,String>();
       userMap["email"]=user.email;
       userMap["uid"]=user.uid;
       userMap["type"]="user";
+      userMap["name"]=user.displayName;
+       //userMap["contact"]=user;
+      
       await _userCollection.document(user.uid).setData(userMap);
       print("user name "+user.displayName);
       return user;
@@ -74,7 +79,7 @@ class AuthService{
   }
 
   //register wit email and password
-  Future register(String email,String password) async{
+  Future register(String email,String password,String name) async{
     try{
       AuthResult result=await _auth.createUserWithEmailAndPassword(
         email: email, 
@@ -84,6 +89,7 @@ class AuthService{
       userDb.uid=result.user.uid;
       userDb.email=email;
       userDb.type="user";
+      userDb.name=name;
       
       await _userCollection.document(result.user.uid).setData(userDb.toMap(userDb));
       FirebaseUser user=result.user;

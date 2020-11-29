@@ -1,3 +1,4 @@
+import 'package:dbapp/screens/authenticate/onboard.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
 import 'package:dbapp/services/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
@@ -8,29 +9,32 @@ import 'package:flutter/material.dart';
 import '../home/home.dart';
 
 class UserLogin extends StatefulWidget {
-  final Function toggleView;
-  UserLogin({this.toggleView});
+  // final Function toggleView;
+  // UserLogin({this.toggleView});
   @override
   _UserLoginState createState() => _UserLoginState();
 }
 
-class _UserLoginState extends State<UserLogin> {
+class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMixin {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+    AnimationController _iconAnimationController;
+  Animation<double> _iconAnimation;
   bool loading = false;
   //form state
   String email = '';
   String password = '';
   String error = '';
+  
   @override
   void initState() {
     super.initState();
-    // _iconAnimationController = new AnimationController(
-    //     vsync: this, duration: new Duration(milliseconds: 1000));
-    // _iconAnimation = new CurvedAnimation(
-    //     parent: _iconAnimationController, curve: Curves.easeInOut);
-    // _iconAnimation.addListener(() => this.setState(() {}));
-    // _iconAnimationController.forward();
+    _iconAnimationController = new AnimationController(
+        vsync: this, duration: new Duration(milliseconds: 1000));
+    _iconAnimation = new CurvedAnimation(
+        parent: _iconAnimationController, curve: Curves.easeInOut);
+    _iconAnimation.addListener(() => this.setState(() {}));
+    _iconAnimationController.forward();
   }
 
   @override
@@ -45,11 +49,31 @@ class _UserLoginState extends State<UserLogin> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new Divider(height: 35.0, color: Colors.transparent),
+                        Container(
+                            width: _iconAnimation.value * 200,
+                            height: _iconAnimation.value * 210,
+                            decoration: new BoxDecoration(
+                                image: new DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: new AssetImage(
+                                            'assets/images/caugh.png')
+                                  ))),
+                        new Divider(height: 50.0, color: Colors.transparent),
                         Form(
                           key: _formKey,
                           child: Column(
                             children: <Widget>[
+                              SizedBox(height: 20.0),
+                              new Text(
+                                'Welcome Back',
+                                style: TextStyle(
+                                  fontFamily: 'GoogleSans',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+
                               SizedBox(height: 20.0),
                               TextFormField(
                                   decoration: textInputDecorations.copyWith(
@@ -67,6 +91,7 @@ class _UserLoginState extends State<UserLogin> {
                                   onChanged: (val) {
                                     setState(() => email = val);
                                   }),
+
                               SizedBox(height: 20.0),
                               TextField(
                                   decoration: textInputDecorations.copyWith(
@@ -145,51 +170,92 @@ class _UserLoginState extends State<UserLogin> {
                               SizedBox(height: 15),
                               Text("OR"),
                               SizedBox(height: 15),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 50),
-                                child: MaterialButton(
-                                    minWidth: double.infinity,
-                                    height: 48,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
-                                    color: new Color(0xff0350C2),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.email,
-                                          color: Colors.white,
+                              new Container(
+                                margin: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
+                                child: new RaisedButton(
+                                  padding: EdgeInsets.only(top: 3.0,bottom: 3.0,left: 3.0),
+                                  color: Colors.white,
+                                  onPressed: () async {
+                                    setState(() {
+                                      loading=true;
+                                    });
+                                    dynamic user = await _auth.googleSignIn();
+                                    if (user == null) {
+                                      setState(() {
+                                        error = 'couldnt sign up ';
+                                        loading = false;
+                                      });
+                                    } else {
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Home(),
                                         ),
-                                        Text(
-                                          ' Sign In With Google',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'GoogleSans'),
-                                        ),
-                                      ],
-                                    ),
-                                    onPressed: () async {
-                                      dynamic user = await _auth.googleSignIn();
-                                      if (user == null) {
-                                        setState(() {
-                                          error = 'couldnt sign up ';
-                                          loading = false;
-                                        });
-                                      } else {
-                                        print("going from here");
-                                        Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                Home(),
-                                          ),
-                                          (route) => false,
-                                        );
-                                      }
-                                    }),
+                                        (route) => false,
+                                      );
+                                    }
+                                  },
+                                  child: new Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Image.asset(
+                                        'assets/images/icons8-google-48.png',
+                                        height: 35.0,
+                                      ),
+                                      new Container(
+                                        padding: EdgeInsets.only(left: 10.0,right: 10.0),
+                                          child: new Text("Sign in with Google",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
+                                      ),
+                                    ],
+                                  )
+                                ),
                               ),
+                              // Container(
+                              //   margin: EdgeInsets.symmetric(horizontal: 50),
+                              //   child: MaterialButton(
+                              //       minWidth: double.infinity,
+                              //       height: 48,
+                              //       shape: RoundedRectangleBorder(
+                              //         borderRadius: BorderRadius.circular(50.0),
+                              //       ),
+                              //       color: new Color(0xff0350C2),
+                              //       child: Row(
+                              //         children: [
+                              //           Icon(
+                              //             Icons.email,
+                              //             color: Colors.white,
+                              //           ),
+                              //           Text(
+                              //             ' Sign In With Google',
+                              //             style: TextStyle(
+                              //                 color: Colors.white,
+                              //                 fontSize: 15,
+                              //                 fontWeight: FontWeight.w600,
+                              //                 fontFamily: 'GoogleSans'),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //       onPressed: () async {
+                              //         dynamic user = await _auth.googleSignIn();
+                              //         if (user == null) {
+                              //           setState(() {
+                              //             error = 'couldnt sign up ';
+                              //             loading = false;
+                              //           });
+                              //         } else {
+                              //           print("going from here");
+                              //           Navigator.pushAndRemoveUntil(
+                              //             context,
+                              //             MaterialPageRoute(
+                              //               builder: (BuildContext context) =>
+                              //                   Home(),
+                              //             ),
+                              //             (route) => false,
+                              //           );
+                              //         }
+                              //       }),
+                              // ),
                               SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -201,7 +267,7 @@ class _UserLoginState extends State<UserLogin> {
                                           fontFamily: 'GoogleSans')),
                                   SizedBox(height: 5.0),
                                   InkWell(
-                                    onTap: widget.toggleView,
+                                    onTap: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterForm1())),
                                     child: Container(
                                       alignment: Alignment.bottomCenter,
                                       margin:

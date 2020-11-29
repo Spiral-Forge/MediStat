@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dbapp/screens/vc/user.dart';
+import 'package:dbapp/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class DBUtils{
