@@ -3,6 +3,7 @@ import 'package:dbapp/services/geolocatorservice.dart';
 import 'package:dbapp/services/markerservice.dart';
 import 'package:dbapp/services/placeservice.dart';
 import 'package:dbapp/shared/drawer.dart';
+import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -172,7 +173,7 @@ class Search extends StatelessWidget {
                       );
               })
             : Center(
-                child: CircularProgressIndicator(),
+                child: Loading(),
               ),
       ),
     );
