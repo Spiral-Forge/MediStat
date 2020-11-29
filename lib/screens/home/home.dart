@@ -33,21 +33,6 @@ class _HomeState extends State<Home> {
   Widget build(context) {
     return Scaffold(
       backgroundColor: Colors.blue[50],
-      appBar: AppBar(
-        title: Text("myapp"),
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        actions: <Widget>[
-          FlatButton.icon(
-              onPressed: () async {
-                await _auth.signOut();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Authenticate()));
-              },
-              icon: Icon(Icons.person),
-              label: Text('logout'))
-        ],
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

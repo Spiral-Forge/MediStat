@@ -4,8 +4,11 @@ import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/services/dbutils.dart';
 import 'package:dbapp/services/permissions.dart';
 import 'package:dbapp/services/call_utilities.dart';
+import 'package:dbapp/shared/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+final myDrawer _drawer = new myDrawer();
 
 class HomePage extends StatefulWidget {
   @override
@@ -47,10 +50,10 @@ class _HomePageState extends State<HomePage> {
 
     sender.uid = senderInfo.uid;
     sender.email = senderInfo.email;
-  print("receiver list len here");
-  print(receiverList.length);
-    for (int i = 0; i < receiverList.length && i<5; i++) {
-      print("coming in for i= " + i.toString()); 
+    print("receiver list len here");
+    print(receiverList.length);
+    for (int i = 0; i < receiverList.length && i < 5; i++) {
+      print("coming in for i= " + i.toString());
       var currReceiver = new User();
       currReceiver.uid = receiverList[i].data["uid"];
       currReceiver.email = receiverList[i].data["email"];
@@ -61,7 +64,7 @@ class _HomePageState extends State<HomePage> {
     print("reciever list fro initsate");
     print(receivers[0]);
     // setState(() {
-      
+
     // });
     // print("receiver");
     // print(receiverList[num].data["uid"]);
@@ -76,6 +79,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: _scaffoldKey,
+      drawer: _drawer,
       body: Column(children: [
         Expanded(
             child: Container(

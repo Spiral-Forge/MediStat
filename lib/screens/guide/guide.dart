@@ -1,5 +1,8 @@
 import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:dbapp/shared/drawer.dart';
+
+final myDrawer _drawer = new myDrawer();
 
 class Guide extends StatefulWidget {
   @override
@@ -12,18 +15,11 @@ class _GuideState extends State<Guide> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
   }
 
   @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   controller.dispose();
-  //   super.dispose();
-  // }
-
   void onScroll() {
     setState(() {
       offset = (controller.hasClients) ? controller.offset : 0;
@@ -32,75 +28,74 @@ class _GuideState extends State<Guide> {
 
   @override
   Widget build(BuildContext context) {
-    // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
-      // key: _scaffoldKey,
-      body: SingleChildScrollView(
-        controller: controller,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // MyHeader(
-            //   // image: "assets/images/coronadrr.jpg",
-            //   textTop: "Get to know",
-            //   textBottom: "About Covid-19.",
-            //   offset: offset,
-            // ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),
-              child: Row(children: [
-                IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: () {
-                      // _scaffoldKey.currentState.openDrawer();
-                    }),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
-                  child: Text(
-                    "Medical Guide",
-                    style: kTitleTextstyle,
-                  ),
-                )
-              ]),
-            ),
-            SizedBox(height: 20),
-            Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(children: [
-                  PreventCard(
-                    text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wear_mask.png",
-                    title: "Wear face mask",
-                  ),
-                  PreventCard(
-                    text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wash_hands.png",
-                    title: "Wash your hands",
-                  ),
-                  PreventCard(
-                    text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wear_mask.png",
-                    title: "Wear face mask",
-                  ),
-                  PreventCard(
-                    text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wash_hands.png",
-                    title: "Wash your hands",
-                  ),
-                  PreventCard(
-                    text:
-                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wear_mask.png",
-                    title: "Wear face mask",
-                  ),
-                  SizedBox(height: 50),
-                ]))
-          ],
-        ),
+      key: _scaffoldKey,
+      drawer: _drawer,
+      body: Column(
+        children: [
+          Expanded(
+              child: Container(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),
+                          child: Row(children: [
+                            IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  _scaffoldKey.currentState.openDrawer();
+                                }),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                              child: Text(
+                                "Medical Guide",
+                                style: kTitleTextstyle,
+                              ),
+                            )
+                          ]),
+                        ),
+                        SizedBox(height: 20),
+                        Expanded(
+                            child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: ListView(children: [
+                                  PreventCard(
+                                    text:
+                                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                                    image: "assets/images/wear_mask.png",
+                                    title: "Wear face mask",
+                                  ),
+                                  PreventCard(
+                                    text:
+                                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                                    image: "assets/images/wash_hands.png",
+                                    title: "Wash your hands",
+                                  ),
+                                  PreventCard(
+                                    text:
+                                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                                    image: "assets/images/wear_mask.png",
+                                    title: "Wear face mask",
+                                  ),
+                                  PreventCard(
+                                    text:
+                                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                                    image: "assets/images/wash_hands.png",
+                                    title: "Wash your hands",
+                                  ),
+                                  PreventCard(
+                                    text:
+                                        "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                                    image: "assets/images/wear_mask.png",
+                                    title: "Wear face mask",
+                                  ),
+                                  SizedBox(height: 50),
+                                ])))
+                      ]))))
+        ],
       ),
     );
   }
