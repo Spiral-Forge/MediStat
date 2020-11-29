@@ -1,3 +1,5 @@
+import 'package:dbapp/screens/sidebar/contact.dart';
+import 'package:dbapp/screens/sidebar/terms.dart';
 import 'package:dbapp/services/miniauth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/services/auth.dart';
@@ -64,9 +66,9 @@ class _myDrawerState extends State<myDrawer> {
               ),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => Guidelines()));
+                 Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Terms()));
               }),
           new ListTile(
               title: new Text(
@@ -75,9 +77,9 @@ class _myDrawerState extends State<myDrawer> {
               ),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).push(new MaterialPageRoute(
-                //     builder: (BuildContext context) => new FAQS()));
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Contact()));
               }),
           new Divider(),
           new ListTile(

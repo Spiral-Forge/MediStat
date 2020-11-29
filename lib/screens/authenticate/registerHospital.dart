@@ -1,4 +1,5 @@
 import 'package:dbapp/screens/authenticate/loginUser.dart';
+import 'package:dbapp/screens/home/hospitalHome.dart';
 import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/screens/home/home.dart';
 import 'package:flutter/material.dart';
@@ -298,7 +299,7 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                                             MaterialPageRoute(
                                                               builder: (BuildContext
                                                                       context) =>
-                                                                  Home(),
+                                                                  HospitalHome(),
                                                             ),
                                                             (route) => false,
                                                           );
