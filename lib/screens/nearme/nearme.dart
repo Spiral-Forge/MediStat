@@ -23,6 +23,7 @@ class NearMe extends StatelessWidget {
         })
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Search(),
       ),
     );
