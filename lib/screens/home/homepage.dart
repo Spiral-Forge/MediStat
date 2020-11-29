@@ -49,14 +49,14 @@ class _HomePageState extends State<HomePage> {
     // receiver=db.getReceiver();
 
     sender.uid = senderInfo.uid;
-    sender.email = senderInfo.email;
+    sender.name = senderInfo.name;
     print("receiver list len here");
     print(receiverList.length);
     for (int i = 0; i < receiverList.length && i < 5; i++) {
       print("coming in for i= " + i.toString());
       var currReceiver = new User();
       currReceiver.uid = receiverList[i].data["uid"];
-      currReceiver.email = receiverList[i].data["email"];
+      currReceiver.name = receiverList[i].data["name"];
       receivers.add(currReceiver);
       // print("receiver[i] is ");
       // print(receivers[i]);

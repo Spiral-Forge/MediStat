@@ -22,7 +22,7 @@ class CallUtils {
      // print("i in call "+i.toString());
         Call call = new Call(
         callerId: from.uid,
-        callerName: from.email,
+        callerName: from.name,
         receiverId: to[i].uid,
         receiverName: to[i].name,
         channelId: channelID,
