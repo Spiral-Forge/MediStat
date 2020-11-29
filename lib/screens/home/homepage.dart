@@ -1,8 +1,8 @@
+import 'package:dbapp/models/user.dart';
 import 'package:dbapp/shared/colors.dart';
 
 import 'package:dbapp/services/dbutils.dart';
 import 'package:dbapp/services/permissions.dart';
-import 'package:dbapp/screens/vc/user.dart';
 import 'package:dbapp/services/call_utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
