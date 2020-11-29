@@ -112,30 +112,29 @@ class _HomePageState extends State<HomePage> {
                 Stack(
                   children: <Widget>[
                     Container(
-                      // width: MediaQuery.of(context).size.height / 2,
-                      height: MediaQuery.of(context).size.height / 3,
+                      height: MediaQuery.of(context).size.height / 3.6,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.mediBlue.withOpacity(0.3)),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height / 6 -
-                          MediaQuery.of(context).size.height / 6.6,
+                      top: MediaQuery.of(context).size.height / 7.2 -
+                          MediaQuery.of(context).size.height / 7.8,
                       left: MediaQuery.of(context).size.width / 2 -
-                          MediaQuery.of(context).size.height / 6.6,
+                          MediaQuery.of(context).size.height / 7.8,
                       child: Container(
-                        width: MediaQuery.of(context).size.height / 3.3,
-                        height: MediaQuery.of(context).size.height / 3.3,
+                        width: MediaQuery.of(context).size.height / 3.9,
+                        height: MediaQuery.of(context).size.height / 3.9,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.mediBlue.withOpacity(0.7)),
                       ),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height / 6 -
-                          MediaQuery.of(context).size.height / 7.4,
+                      top: MediaQuery.of(context).size.height / 7.2 -
+                          MediaQuery.of(context).size.height / 8.6,
                       left: MediaQuery.of(context).size.width / 2 -
-                          MediaQuery.of(context).size.height / 7.4,
+                          MediaQuery.of(context).size.height / 8.6,
                       child: InkResponse(
                         onTap: () async {
                           bool permission = await Permissions
@@ -154,8 +153,8 @@ class _HomePageState extends State<HomePage> {
                           }
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.height / 3.7,
-                          height: MediaQuery.of(context).size.height / 3.7,
+                          width: MediaQuery.of(context).size.height / 4.3,
+                          height: MediaQuery.of(context).size.height / 4.3,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.mediBlue),
@@ -170,39 +169,39 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: MediaQuery.of(context).size.height / 10),
                 Stack(
                   children: <Widget>[
                     Container(
                       // width: MediaQuery.of(context).size.height / 2,
-                      height: MediaQuery.of(context).size.height / 3,
+                      height: MediaQuery.of(context).size.height / 3.6,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.mediBlue.withOpacity(0.3)),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height / 6 -
-                          MediaQuery.of(context).size.height / 6.6,
+                      top: MediaQuery.of(context).size.height / 7.2 -
+                          MediaQuery.of(context).size.height / 7.8,
                       left: MediaQuery.of(context).size.width / 2 -
-                          MediaQuery.of(context).size.height / 6.6,
+                          MediaQuery.of(context).size.height / 7.8,
                       child: Container(
-                        width: MediaQuery.of(context).size.height / 3.3,
-                        height: MediaQuery.of(context).size.height / 3.3,
+                        width: MediaQuery.of(context).size.height / 3.9,
+                        height: MediaQuery.of(context).size.height / 3.9,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.mediBlue.withOpacity(0.7)),
                       ),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height / 6 -
-                          MediaQuery.of(context).size.height / 7.4,
+                      top: MediaQuery.of(context).size.height / 7.2 -
+                          MediaQuery.of(context).size.height / 8.6,
                       left: MediaQuery.of(context).size.width / 2 -
-                          MediaQuery.of(context).size.height / 7.4,
+                          MediaQuery.of(context).size.height / 8.6,
                       child: InkResponse(
                         onTap: () => _makingPhoneCall(),
                         child: Container(
-                          width: MediaQuery.of(context).size.height / 3.7,
-                          height: MediaQuery.of(context).size.height / 3.7,
+                          width: MediaQuery.of(context).size.height / 4.3,
+                          height: MediaQuery.of(context).size.height / 4.3,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.mediBlue),

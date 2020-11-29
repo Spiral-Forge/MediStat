@@ -12,9 +12,10 @@ final kShadowColor = Color(0xFFB7B7B7).withOpacity(.16);
 final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
 
 const kHeadingTextStyle =
-    TextStyle(fontSize: 24, fontWeight: FontWeight.w400, color: Colors.white);
+    TextStyle(fontSize: 21, fontWeight: FontWeight.w400, color: Colors.white);
 
-const kSubTextStyle = TextStyle(fontSize: 16, color: Colors.white);
+const kSubTextStyle = TextStyle(
+    fontSize: 16, color: kTitleTextColor, fontWeight: FontWeight.w400);
 
 const kTitleTextstyle = TextStyle(
   fontSize: 24,
