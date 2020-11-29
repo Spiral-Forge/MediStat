@@ -89,7 +89,7 @@ class _GuideState extends State<Guide> {
                                     text:
                                         "There are different kinds of bleeding, from a minor scrape to the most dangerous type, arterial bleeding. In either case, your goal is to stop the bleeding as soon as possible. ",
                                     image: "assets/images/wash_hands.png",
-                                    title: "How to Treat a Burn",
+                                    title: "How to Treat a Bleeding",
                                     link:"https://youtu.be/NxO5LvgqZe0",
                                   ),
                                   PreventCard(
