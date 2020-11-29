@@ -54,7 +54,7 @@ class _myDrawerState extends State<myDrawer> {
                 style: TextStyle(fontFamily: 'GoogleSans', fontSize: 20),
               ),
               subtitle: new Text(
-                userName +" \n"+ userMail,
+                userName + "\n" +userMail,
                 style: TextStyle(fontFamily: 'GoogleSans', fontSize: 13),
               ),
               onTap: () {}),
