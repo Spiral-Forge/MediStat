@@ -1,3 +1,6 @@
+import 'package:dbapp/screens/sidebar/contact.dart';
+import 'package:dbapp/screens/sidebar/terms.dart';
+import 'package:dbapp/services/miniauth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,21 +12,20 @@ class myDrawer extends StatefulWidget {
 
 class _myDrawerState extends State<myDrawer> {
   var userMail = '';
-  // AuthMethods auth = new AuthMethods();
-  // var userDetails = auth.getUserDetails();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  Future<FirebaseUser> getUser() async {
-    return await _auth.currentUser();
-  }
+  var userName='';
+  AuthMethods auth = new AuthMethods();
+  
 
   void initState() {
     super.initState();
-    getUser().then((user) {
-      if (user != null) {
-        // userName = user.name;
-        // userMail = user.data['email'];
-      }
+    initialize();
+  }
+  
+  void initialize()async {
+    var user=await auth.getUserDetails();
+    setState(() {
+      userMail=user.email;
+      userName=user.name;
     });
   }
 
@@ -48,11 +50,11 @@ class _myDrawerState extends State<myDrawer> {
                     child: Icon(Icons.person),
                   ))),
               title: new Text(
-                "Logged In as",
+                "Logged in as",
                 style: TextStyle(fontFamily: 'GoogleSans', fontSize: 20),
               ),
               subtitle: new Text(
-                "heelo",
+                userName +" \n"+ userMail,
                 style: TextStyle(fontFamily: 'GoogleSans', fontSize: 13),
               ),
               onTap: () {}),
@@ -64,9 +66,9 @@ class _myDrawerState extends State<myDrawer> {
               ),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => Guidelines()));
+                 Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Terms()));
               }),
           new ListTile(
               title: new Text(
@@ -75,9 +77,9 @@ class _myDrawerState extends State<myDrawer> {
               ),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).push(new MaterialPageRoute(
-                //     builder: (BuildContext context) => new FAQS()));
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Contact()));
               }),
           new Divider(),
           new ListTile(
