@@ -188,7 +188,6 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                             onChanged: (val) {
                                               setState(() => email = val);
                                             }),
-
                                         TextFormField(
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -222,7 +221,6 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                             onChanged: (val) {
                                               setState(() => password = val);
                                             }),
-
                                         TextFormField(
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -256,137 +254,102 @@ class _RegisterForm2State extends State<RegisterForm2> {
                                               setState(() => address = val);
                                             }),
                                         new Divider(
-                                            height: 35.0,
+                                            height: 30.0,
                                             color: Colors.transparent),
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                height: 40,
-                                                child: new MaterialButton(
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    color: AppColors.mediBlue,
-                                                    onPressed: () async {
-                                                      if (_formKey2.currentState
-                                                          .validate()) {
-                                                        setState(() {
-                                                          widget.userMap[
-                                                              'name'] = name;
-                                                          userMap['contact'] =
-                                                              contact;
-                                                          userMap['address'] =
-                                                              address;
-                                                          userMap['email'] =
-                                                              email;
-                                                          userMap['password'] =
-                                                              password;
-                                                        });
-                                                        var user = await _auth
-                                                            .registerHospital(
-                                                                userMap);
-                                                        if (user != null) {
-                                                          Navigator
-                                                              .pushAndRemoveUntil(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (BuildContext
-                                                                      context) =>
-                                                                  HospitalHome(),
-                                                            ),
-                                                            (route) => false,
-                                                          );
-                                                        }
-                                                        // Navigator.push(
-                                                        //     context,
-                                                        //     MaterialPageRoute(
-                                                        //         builder: (context) =>
-                                                        //             RegisterForm3(
-                                                        //                 userMap)));
-                                                      }
-                                                    },
-                                                    child: Material(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: AppColors.mediBlue,
-                                                      child: Container(
-                                                          child: Text(
-                                                              'Register',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontFamily:
-                                                                      'GoogleSans',
-                                                                  fontSize: 18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600))),
-                                                    )),
-                                              ),
-                                              
-
-                                              //   onPressed: () async {
-                                              //   if (_formKey.currentState.validate()) {
-                                              //     setState(() {
-                                              //       loading = true;
-                                              //     });
-                                              //     dynamic result =
-                                              //         await _auth.register(email, password);
-                                              //     if (result == null) {
-                                              //       setState(() {
-                                              //         error = 'couldnt sign in ';
-                                              //         loading = false;
-                                              //       });
-                                              //     }
-                                              //   }
-                                              // },
-                                            ]),
-
-                                        new Divider(
-                                            height: 18.0,
-                                            color: Colors.transparent),
-                                        Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Text('Already Registered? ',
-                                                    style: TextStyle(
-                                                        color: const Color(0xFF959595),
-                                                        fontSize: 14.5,
-                                                        fontFamily: 'GoogleSans')),
-                                                SizedBox(height: 5.0),
-                                                InkWell(
-                                                  onTap: ()=>{
-                                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserLogin()))
-                                                  },
-                                                  child: Container(
-                                                    alignment: Alignment.bottomCenter,
-                                                    margin:
-                                                        EdgeInsets.symmetric(vertical: 12),
-                                                    child: Text("Login Here",
-                                                        style: TextStyle(
-                                                            fontFamily: 'GoogleSans',
-                                                            color: new Color(0xff0350C2),
-                                                            fontSize: 14.5,
-                                                            decoration:
-                                                                TextDecoration.underline)),
-                                                  ),
-                                                ),
-                                              ],
+                                        Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 30),
+                                          child: MaterialButton(
+                                            minWidth: double.infinity,
+                                            height: 48,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50.0),
                                             ),
-                                            SizedBox(height: 5.0),
-                                            Text(error,
-                                                textAlign: TextAlign.center,
+                                            color: new Color(0xff0350C2),
+                                            child: Text(
+                                              'Register',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'GoogleSans'),
+                                            ),
+                                            onPressed: () async {
+                                              if (_formKey2.currentState
+                                                  .validate()) {
+                                                setState(() {
+                                                  widget.userMap['name'] = name;
+                                                  userMap['contact'] = contact;
+                                                  userMap['address'] = address;
+                                                  userMap['email'] = email;
+                                                  userMap['password'] =
+                                                      password;
+                                                });
+                                                var user = await _auth
+                                                    .registerHospital(userMap);
+                                                if (user != null) {
+                                                  Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          HospitalHome(),
+                                                    ),
+                                                    (route) => false,
+                                                  );
+                                                }
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                        new Divider(
+                                            height: 10.0,
+                                            color: Colors.transparent),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text('Already Registered? ',
                                                 style: TextStyle(
-                                                    color: Colors.red, fontSize: 14.0)
-                                            )
+                                                    color:
+                                                        const Color(0xFF959595),
+                                                    fontSize: 14.5,
+                                                    fontFamily: 'GoogleSans')),
+                                            SizedBox(height: 5.0),
+                                            InkWell(
+                                              onTap: () => {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            UserLogin()))
+                                              },
+                                              child: Container(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 12),
+                                                child: Text("Login Here",
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            'GoogleSans',
+                                                        color: new Color(
+                                                            0xff0350C2),
+                                                        fontSize: 14.5,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 5.0),
+                                        Text(error,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.red,
+                                                fontSize: 14.0))
                                       ])),
                                 )))
                               ]))))

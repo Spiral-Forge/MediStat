@@ -2,10 +2,11 @@ import 'package:dbapp/screens/authenticate/onboard.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
 import 'package:dbapp/services/miniauth.dart';
 import 'package:dbapp/services/auth.dart';
+import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/shared/style.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/src/painting/box_border.dart';
 import '../home/home.dart';
 
 class UserLogin extends StatefulWidget {
@@ -15,17 +16,18 @@ class UserLogin extends StatefulWidget {
   _UserLoginState createState() => _UserLoginState();
 }
 
-class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMixin {
+class _UserLoginState extends State<UserLogin>
+    with SingleTickerProviderStateMixin {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-    AnimationController _iconAnimationController;
+  AnimationController _iconAnimationController;
   Animation<double> _iconAnimation;
   bool loading = false;
   //form state
   String email = '';
   String password = '';
   String error = '';
-  
+
   @override
   void initState() {
     super.initState();
@@ -56,8 +58,7 @@ class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMix
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: new AssetImage(
-                                            'assets/images/caugh.png')
-                                  ))),
+                                        'assets/images/caugh.png')))),
                         new Divider(height: 50.0, color: Colors.transparent),
                         Form(
                           key: _formKey,
@@ -108,9 +109,10 @@ class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMix
                                   onChanged: (val) {
                                     setState(() => password = val);
                                   }),
-                              SizedBox(height: 20),
+                              SizedBox(height: 30),
+
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 50),
+                                margin: EdgeInsets.symmetric(horizontal: 30),
                                 child: MaterialButton(
                                   minWidth: double.infinity,
                                   height: 48,
@@ -167,17 +169,45 @@ class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMix
                                   },
                                 ),
                               ),
-                              SizedBox(height: 15),
+
+                              SizedBox(height: 10),
                               Text("OR"),
-                              SizedBox(height: 15),
-                              new Container(
-                                margin: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
-                                child: new RaisedButton(
-                                  padding: EdgeInsets.only(top: 3.0,bottom: 3.0,left: 3.0),
-                                  color: Colors.white,
+                              SizedBox(height: 10),
+
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 30),
+                                child: MaterialButton(
+                                  minWidth: double.infinity,
+                                  height: 48,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      side: BorderSide(
+                                          color: AppColors.mediGrey)),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 8.0, 0),
+                                        child: new Image.asset(
+                                          'assets/images/icons8-google-48.png',
+                                          height: 35.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Sign In with Google',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'GoogleSans'),
+                                      ),
+                                    ],
+                                  ),
                                   onPressed: () async {
                                     setState(() {
-                                      loading=true;
+                                      loading = true;
                                     });
                                     dynamic user = await _auth.googleSignIn();
                                     if (user == null) {
@@ -196,19 +226,6 @@ class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMix
                                       );
                                     }
                                   },
-                                  child: new Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Image.asset(
-                                        'assets/images/icons8-google-48.png',
-                                        height: 35.0,
-                                      ),
-                                      new Container(
-                                        padding: EdgeInsets.only(left: 10.0,right: 10.0),
-                                          child: new Text("Sign in with Google",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
-                                      ),
-                                    ],
-                                  )
                                 ),
                               ),
                               // Container(
@@ -267,7 +284,11 @@ class _UserLoginState extends State<UserLogin> with SingleTickerProviderStateMix
                                           fontFamily: 'GoogleSans')),
                                   SizedBox(height: 5.0),
                                   InkWell(
-                                    onTap: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterForm1())),
+                                    onTap: () => Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterForm1())),
                                     child: Container(
                                       alignment: Alignment.bottomCenter,
                                       margin:
