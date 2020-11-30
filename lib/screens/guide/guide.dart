@@ -67,15 +67,15 @@ class _GuideState extends State<Guide> {
                                     text:
                                         "CPR, the technique that could make all the difference for someone who has collapsed and is under cardiac arrest. Learn More:",
                                     link: "https://youtu.be/-NodDRTsV88",
-                                    image: "assets/images/wear_mask.png",
+                                    image: "assets/images/a1.jpg",
                                     title: "Perform CPR",
                                   ),
                                   PreventCard(
                                       text:
-                                          "Know the common signs of heart attacks and what you can do to help a person going through it",
-                                      image: "assets/images/wash_hands.png",
+                                          "Know the common signs of heart attacks and what you can do to help a person going through it.Learn more:",
+                                      image: "assets/images/a2.jpg",
                                       title:
-                                          "What to do if someone has a Heart Attack",
+                                          "Heart Attack- Emergency",
                                       link: "https://youtu.be/gDwt7dD3awc"),
                                   // PreventCard(
                                   //   text:
@@ -86,31 +86,31 @@ class _GuideState extends State<Guide> {
                                   // ),
                                   PreventCard(
                                     text:
-                                        "There are different kinds of bleeding, from a minor scrape to the most dangerous type, arterial bleeding. In either case, your goal is to stop the bleeding as soon as possible. ",
-                                    image: "assets/images/wash_hands.png",
+                                        "There are different kinds of bleeding, from a minor scrape to the most dangerous type, arterial bleeding.Your goal shoulde be to stop the bleeding asap. ",
+                                    image: "assets/images/a3.jpg",
                                     title: "How to Treat a Bleeding",
                                     link: "https://youtu.be/NxO5LvgqZe0",
                                   ),
                                   PreventCard(
                                     text:
-                                        "Immediately after a burn, run cool tap water over the skin for 10 minutes. Then, cool the skin with a moist compress. Don't put ice, butter or anything else directly on the burned skin.",
-                                    image: "assets/images/wash_hands.png",
+                                        "Immediately after a burn, run cool tap water over the skin for 10 minutes. Then, cool the skin with a moist compress.Learn more:",
+                                    image: "assets/images/a4.jpg",
                                     title: "How to Treat a Burn",
                                     link: "https://youtu.be/EaJmzB8YgS0",
                                   ),
                                   PreventCard(
                                     text:
-                                        "The fear of every pregnant woman and her partner: Having to deliver the baby without help.",
-                                    image: "assets/images/wear_mask.png",
+                                        "The fear of every pregnant woman and her partner: Having to deliver the baby without help. Learn More:",
+                                    image: "assets/images/a5.jpg",
                                     title: "How to Deliver Baby",
                                     link: "https://youtu.be/4pOSNcEOaTI",
                                   ),
                                   PreventCard(
                                     text:
-                                        "Usually it's best to leave a person who's hurt where they are until medical help comes. You should never move a person who might have a head, neck, or spinal injury. However, you might need to move someone to a safer location. If you're not very strong or that person is heavier than you, here's how to lift that person.",
-                                    image: "assets/images/wear_mask.png",
+                                        "Usually it's best to leave a person who's hurt where they are until medical help comes.Learn more:",
+                                    image: "assets/images/a6.jpg",
                                     title:
-                                        "How to Carry Someone Heavier Than You",
+                                        "Carry Someone Heavier ",
                                     link: "https://youtu.be/U0yDJ0udMkg",
                                   ),
                                   SizedBox(height: 50),
