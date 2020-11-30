@@ -42,24 +42,25 @@ class _UserLoginState extends State<UserLogin>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: loading
             ? Loading()
             : Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                padding: EdgeInsets.only(top: 40.0, left: 50.0, right: 50),
                 child: Center(
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                            width: _iconAnimation.value * 200,
-                            height: _iconAnimation.value * 210,
+                            width: _iconAnimation.value * 265,
+                            height: _iconAnimation.value * 250,
                             decoration: new BoxDecoration(
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: new AssetImage(
-                                        'assets/images/caugh.png')))),
-                        new Divider(height: 50.0, color: Colors.transparent),
+                                        'assets/images/logo.png')))),
+                        new Divider(height: 20.0, color: Colors.transparent),
                         Form(
                           key: _formKey,
                           child: Column(
@@ -75,12 +76,20 @@ class _UserLoginState extends State<UserLogin>
                                 textAlign: TextAlign.center,
                               ),
 
-                              SizedBox(height: 20.0),
+                              SizedBox(height: 32.0),
                               TextFormField(
                                   decoration: textInputDecorations.copyWith(
                                       labelText: "Enter Email",
                                       labelStyle: TextStyle(
                                         fontFamily: 'GoogleSans',
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide(
+                                          color: AppColors.mediLGrey,
+                                          width: 2.0,
+                                        ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(
@@ -99,6 +108,14 @@ class _UserLoginState extends State<UserLogin>
                                       labelText: "Enter Password",
                                       labelStyle: TextStyle(
                                         fontFamily: 'GoogleSans',
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide(
+                                          color: AppColors.mediLGrey,
+                                          width: 2.0,
+                                        ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(
