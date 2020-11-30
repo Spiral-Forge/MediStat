@@ -3,7 +3,6 @@ import 'package:dbapp/screens/sidebar/terms.dart';
 import 'package:dbapp/services/miniauth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/services/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class myDrawer extends StatefulWidget {
   @override
@@ -12,20 +11,19 @@ class myDrawer extends StatefulWidget {
 
 class _myDrawerState extends State<myDrawer> {
   var userMail = '';
-  var userName='';
+  var userName = '';
   AuthMethods auth = new AuthMethods();
-  
 
   void initState() {
     super.initState();
     initialize();
   }
-  
-  void initialize()async {
-    var user=await auth.getUserDetails();
+
+  void initialize() async {
+    var user = await auth.getUserDetails();
     setState(() {
-      userMail=user.email;
-      userName=user.name;
+      userMail = user.email;
+      userName = user.name;
     });
   }
 
@@ -49,13 +47,16 @@ class _myDrawerState extends State<myDrawer> {
                     height: 40,
                     child: Icon(Icons.person),
                   ))),
-              title: new Text(
-                "Logged in as",
-                style: TextStyle(fontFamily: 'GoogleSans', fontSize: 20),
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: new Text(
+                  "Logged in as",
+                  style: TextStyle(fontFamily: 'GoogleSans', fontSize: 16),
+                ),
               ),
               subtitle: new Text(
-                userName + "\n" +userMail,
-                style: TextStyle(fontFamily: 'GoogleSans', fontSize: 13),
+                userName + "\n" + userMail,
+                style: TextStyle(fontFamily: 'GoogleSans', fontSize: 14),
               ),
               onTap: () {}),
           new Divider(),
@@ -66,7 +67,7 @@ class _myDrawerState extends State<myDrawer> {
               ),
               trailing: new Icon(Icons.arrow_right),
               onTap: () {
-                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
                 Navigator.of(context).push(new MaterialPageRoute(
                     builder: (BuildContext context) => Terms()));
               }),

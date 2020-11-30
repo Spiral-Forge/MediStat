@@ -46,38 +46,39 @@ class _RegisterForm1State extends State<RegisterForm1>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.white,
         body: loading
             ? Loading()
             : SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: new Container(
-                    padding:
-                        EdgeInsets.only(top: 60.0, left: 50.0, right: 50.0),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 50,
+                    ),
                     child: Form(
                         key: _formKey1,
                         child: Center(
                           child: ListView(shrinkWrap: true, children: <Widget>[
                             new Divider(
                                 height: 35.0, color: Colors.transparent),
-                            Container(
-                                width: _iconAnimation.value * 100,
-                                height: _iconAnimation.value * 110,
-                                decoration: new BoxDecoration(
-                                    image: new DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: new AssetImage(
-                                            'assets/images/caugh.png')))),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 18.0),
+                              child: Container(
+                                  width: _iconAnimation.value * 265,
+                                  height: _iconAnimation.value * 250,
+                                  decoration: new BoxDecoration(
+                                      image: new DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: new AssetImage(
+                                              'assets/images/logo.png')))),
+                            ),
                             new Divider(
-                                height: 55.0, color: Colors.transparent),
+                                height: 35.0, color: Colors.transparent),
                             new Text(
                               'Register yourself as',
                               style: kTitleTextstyle,
-                              // TextStyle(
-                              //   fontFamily: 'GoogleSans',
-                              //   fontSize: 32,
-                              //   fontWeight: FontWeight.w600,
-                              // ),
                               textAlign: TextAlign.center,
                             ),
                             new Divider(
