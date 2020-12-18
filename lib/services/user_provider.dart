@@ -1,11 +1,6 @@
 import 'package:dbapp/models/user.dart';
 import 'package:flutter/widgets.dart';
-
 import 'miniauth.dart';
-
-
-
-
 
 class UserProvider with ChangeNotifier {
   User _user;

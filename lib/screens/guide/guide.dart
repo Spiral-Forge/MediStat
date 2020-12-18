@@ -77,13 +77,6 @@ class _GuideState extends State<Guide> {
                                       title:
                                           "Heart Attack- Emergency",
                                       link: "https://youtu.be/gDwt7dD3awc"),
-                                  // PreventCard(
-                                  //   text:
-                                  //       "Drowning is one of the most common causes of accidental death, especially among children. If you're not a skilled swimmer who knows how to swim with a possibly flailing person, the most important thing to know is.",
-                                  //   image: "assets/images/wear_mask.png",
-                                  //   title: "What to do in case of drowning",
-                                  //   link: "https://youtu.be/v-kCzuUYadI",
-                                  // ),
                                   PreventCard(
                                     text:
                                         "There are different kinds of bleeding, from a minor scrape to the most dangerous type, arterial bleeding.Your goal shoulde be to stop the bleeding asap. ",

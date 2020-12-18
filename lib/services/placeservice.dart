@@ -1,9 +1,10 @@
+import 'package:dbapp/config/map_configs.dart';
 import 'package:dbapp/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class PlacesService {
-  final key = 'AIzaSyCu4dB0gp9KWxG4phEJ_NmyumauuBflrio';
+  final key = MAPS_KEY;
 
   Future<List<Place>> getPlaces(double lat, double lng) async {
     var response = await http.get(

@@ -1,11 +1,8 @@
 import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-
 
 _makingPhoneCall() async {
   const url = 'tel:9898989899';
@@ -15,11 +12,6 @@ _makingPhoneCall() async {
     throw 'Could not launch $url';
   }
 }
-
-
-
-
-
 
 
 class Contact extends StatelessWidget {
@@ -132,10 +124,7 @@ class Contact extends StatelessWidget {
                                   ),
                                   
                                 ),
-                              ),
-                    
-                    
-                    
+                              ),            
         ])))
             ]));
   }

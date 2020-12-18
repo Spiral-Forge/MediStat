@@ -22,20 +22,7 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFireBaseUser);
   }
 
-  //sign in anonymously
-  Future signInAnon() async {
-    try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
-      return _userFromFireBaseUser(user);
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
-
   //sign in with google
-
     Future<FirebaseUser> googleSignIn() async{
       GoogleSignInAccount googleSignInAccount=await _googleSignIn.signIn();
       GoogleSignInAuthentication gsa=await googleSignInAccount.authentication;
@@ -75,8 +62,7 @@ class AuthService {
     }
   }
 
-  //register wit email and password
-
+  //register with email and password
   Future register(String email,String password,String name) async{
     try{
       AuthResult result=await _auth.createUserWithEmailAndPassword(
@@ -99,6 +85,7 @@ class AuthService {
     }
   }
 
+  //register hospital with email and password
   Future registerHospital(Map userMap) async {
     try {
       print("inside register hospital");

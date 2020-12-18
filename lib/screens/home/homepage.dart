@@ -30,46 +30,24 @@ class _HomePageState extends State<HomePage> {
   var sender = new User();
   var receivers = new List<User>();
   void initState() {
-    print("im in init state of homepage");
     super.initState();
     initialize();
   }
 
   initialize() async {
-    print("hello from initialize");
     var receiverList = await db.getReceiver();
-    //int num=Random().nextInt(receiverList.length);
-    print("receiver list from db");
-    print(receiverList[0].data);
     var senderInfo = await db.getSender();
-    print("sender info");
-    print(senderInfo.uid);
-
-    // sender=db.getSender();
-    // receiver=db.getReceiver();
 
     sender.uid = senderInfo.uid;
     sender.name = senderInfo.name;
-    print("receiver list len here");
-    print(receiverList.length);
+
     for (int i = 0; i < receiverList.length && i < 5; i++) {
-      print("coming in for i= " + i.toString());
       var currReceiver = new User();
       currReceiver.uid = receiverList[i].data["uid"];
       currReceiver.name = receiverList[i].data["name"];
       receivers.add(currReceiver);
-      // print("receiver[i] is ");
-      // print(receivers[i]);
     }
-    print("reciever list fro initsate");
-    print(receivers[0]);
-    // setState(() {
 
-    // });
-    // print("receiver");
-    // print(receiverList[num].data["uid"]);
-    // receiver.uid = receiverList[num].data["uid"];
-    // receiver.email = receiverList[num].data["email"];
   }
 
   @override
@@ -161,7 +139,6 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Text("Get instant help",
                                 style: kHeadingTextStyle
-                                // TextStyle(color: Colors.white, fontSize: 24),
                                 ),
                           ),
                         ),
@@ -173,7 +150,6 @@ class _HomePageState extends State<HomePage> {
                 Stack(
                   children: <Widget>[
                     Container(
-                      // width: MediaQuery.of(context).size.height / 2,
                       height: MediaQuery.of(context).size.height / 3.6,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -208,7 +184,6 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Text("Call an ambulance",
                                 style: kHeadingTextStyle
-                                // TextStyle(color: Colors.white, fontSize: 24),
                                 ),
                           ),
                         ),

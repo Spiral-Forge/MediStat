@@ -10,15 +10,8 @@ class CallMethods {
 
   Future<bool> makeCall({Call call}) async {
     try {
-
-
       call.hasDialled = false;
       Map<String, dynamic> hasNotDialledMap = call.toMap(call);
-      // print("has dialed map");
-      // print(hasDialledMap);
-      // print("has not dialed map");
-      // print(hasNotDialledMap);
-
       await callCollection.document(call.receiverId).setData(hasNotDialledMap);
       return true;
     } catch (e) {

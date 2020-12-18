@@ -13,7 +13,6 @@ class HospitalHome extends StatefulWidget {
 }
 
 class _HospitalHomeState extends State<HospitalHome> {
-  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
@@ -24,8 +23,6 @@ class _HospitalHomeState extends State<HospitalHome> {
           drawer: _drawer,
           backgroundColor: Colors.white,
           body: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),

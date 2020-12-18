@@ -1,9 +1,7 @@
-import 'package:dbapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/screens/home/homepage.dart';
 import 'package:dbapp/screens/guide/guide.dart';
 import 'package:dbapp/screens/nearme/nearme.dart';
-import '../authenticate/authenticate.dart';
 import 'homepage.dart';
 
 class Home extends StatefulWidget {
@@ -12,8 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Guide(),
@@ -26,8 +23,6 @@ class _HomeState extends State<Home> {
       _selectedIndex = index;
     });
   }
-
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(context) {

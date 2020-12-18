@@ -1,7 +1,5 @@
 import 'package:dbapp/screens/authenticate/loginUser.dart';
 import 'package:dbapp/screens/home/hospitalHome.dart';
-import 'package:dbapp/shared/colors.dart';
-import 'package:dbapp/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +12,6 @@ String password = '';
 String address = '';
 
 class RegisterForm2 extends StatefulWidget {
-  //taken from parent props:
   var userMap = new Map<String, dynamic>();
   Function toggleView;
   RegisterForm2({this.toggleView});

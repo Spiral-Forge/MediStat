@@ -19,29 +19,12 @@ class PickupScreen extends StatefulWidget {
 
 class _PickupScreenState extends State<PickupScreen> {
   final CallMethods callMethods = CallMethods();
-  // final LogRepository logRepository = LogRepository(isHive: true);
-  // final LogRepository logRepository = LogRepository(isHive: false);
 
   bool isCallMissed = true;
 
-  // addToLocalStorage({@required String callStatus}) {
-  //   Log log = Log(
-  //     callerName: widget.call.callerName,
-  //     callerPic: widget.call.callerPic,
-  //     receiverName: widget.call.receiverName,
-  //     receiverPic: widget.call.receiverPic,
-  //     timestamp: DateTime.now().toString(),
-  //     callStatus: callStatus,
-  //   );
-
-  //   LogRepository.addLogs(log);
-  // }
 
   @override
   void dispose() {
-    // if (isCallMissed) {
-    //   addToLocalStorage(callStatus: CALL_STATUS_MISSED);
-    // }
     super.dispose();
   }
 
@@ -61,11 +44,7 @@ class _PickupScreenState extends State<PickupScreen> {
               ),
             ),
             SizedBox(height: 50),
-            // CachedImage(
-            //   widget.call.callerPic,
-            //   isRound: true,
-            //   radius: 180,
-            // ),
+
             SizedBox(height: 15),
             Text(
               widget.call.callerName,
@@ -83,7 +62,6 @@ class _PickupScreenState extends State<PickupScreen> {
                   color: Colors.redAccent,
                   onPressed: () async {
                     isCallMissed = false;
-                    // addToLocalStorage(callStatus: CALL_STATUS_RECEIVED);
                     await callMethods.endCall(call: widget.call);
                   },
                 ),
@@ -93,7 +71,6 @@ class _PickupScreenState extends State<PickupScreen> {
                     color: Colors.green,
                     onPressed: () async {
                       isCallMissed = false;
-                      // addToLocalStorage(callStatus: CALL_STATUS_RECEIVED);
                       bool permission=await Permissions.cameraAndMicrophonePermissionsGranted();
                       if(permission){
                         await callMethods.callAccepted(widget.call);

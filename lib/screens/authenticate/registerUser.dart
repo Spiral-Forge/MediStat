@@ -1,11 +1,9 @@
-import 'package:dbapp/main.dart';
 import 'package:dbapp/screens/authenticate/loginUser.dart';
 import 'package:dbapp/services/auth.dart';
 import 'package:dbapp/shared/colors.dart';
 import 'package:dbapp/shared/style.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';
-
 import '../home/home.dart';
 
 class UserRegister extends StatefulWidget {
@@ -23,7 +21,6 @@ class _UserRegisterState extends State<UserRegister> {
   String email = '';
   String password = '';
   String error = '';
-  //String contact='';
   String name = '';
   @override
   void initState() {
@@ -42,8 +39,6 @@ class _UserRegisterState extends State<UserRegister> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // SizedBox(
-                          //     height: MediaQuery.of(context).size.height / 70),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(15.0, 42, 0, 0),
                             child: Row(
@@ -84,7 +79,6 @@ class _UserRegisterState extends State<UserRegister> {
                                         key: _formKey,
                                         child: Column(
                                           children: <Widget>[
-                                            // SizedBox(height: 20.0),
                                             TextFormField(
                                                 decoration: textInputDecorations
                                                     .copyWith(

@@ -3,7 +3,6 @@ import 'package:dbapp/screens/authenticate/registerUser.dart';
 import 'package:dbapp/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:dbapp/shared/loading.dart';
-// ignore: unused_import
 import 'package:dbapp/screens/authenticate/registerHospital.dart';
 
 int visibleCard = 1;
@@ -13,9 +12,6 @@ String post = '';
 Map<String, dynamic> userMap = {'type': ''};
 
 class RegisterForm1 extends StatefulWidget {
-  //taken from parent props:
-  // final Function toggleView;
-  // RegisterForm1({this.toggleView});
   @override
   _RegisterForm1State createState() => _RegisterForm1State();
 }

@@ -1,7 +1,6 @@
 import 'package:dbapp/models/place.dart';
 import 'package:dbapp/services/geolocatorservice.dart';
 import 'package:dbapp/services/markerservice.dart';
-import 'package:dbapp/services/placeservice.dart';
 import 'package:dbapp/shared/drawer.dart';
 import 'package:dbapp/shared/loading.dart';
 import 'package:flutter/material.dart';

@@ -20,8 +20,6 @@ class _HomeHandlerState extends State<HomeHandler> {
   initialize() async {
     AuthMethods auth = new AuthMethods();
     var user = await auth.getUserDetails();
-    // print("user type");
-    // print(user.type);
     if (user.type == "user") {
       setState(() {
         hospital = false;
