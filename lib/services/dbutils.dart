@@ -13,7 +13,6 @@ class DBUtils{
 
         DocumentSnapshot documentSnapshot =
             await _userCollection.document(currentUser.uid).get();
-        print("curr user");
         return User.fromMap(documentSnapshot.data);
       }
 
@@ -23,16 +22,12 @@ class DBUtils{
         .collection('/users')
         .where('type', isEqualTo: "hospital")
         .getDocuments();
-        print("res is");
-        print(res.documents);
         return res.documents;
       }
 
     Future<FirebaseUser> getCurrentUser() async {
         FirebaseUser currentUser;
         currentUser = await _auth.currentUser();
-        print("current user is ");
-        print(currentUser);
         return currentUser;
     }
 

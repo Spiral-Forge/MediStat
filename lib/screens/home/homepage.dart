@@ -118,9 +118,6 @@ class _HomePageState extends State<HomePage> {
                           bool permission = await Permissions
                               .cameraAndMicrophonePermissionsGranted();
                           if (permission) {
-                            print("receivers on ontap");
-                            print(receivers);
-                            print("hiiii");
                             return CallUtils.dial(
                               from: sender,
                               to: receivers,

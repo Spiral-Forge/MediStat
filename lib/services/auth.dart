@@ -31,11 +31,7 @@ class AuthService {
         idToken: gsa.idToken,
       );
       final AuthResult authResult = await _auth.signInWithCredential(credential);
-      print("auth result is ");
-      print(authResult);
       FirebaseUser user = authResult.user;
-      print("user on google sign in");
-      print(user);
       var userMap= new Map<String,String>();
       userMap["email"]=user.email;
       userMap["uid"]=user.uid;
@@ -44,7 +40,6 @@ class AuthService {
        //userMap["contact"]=user;
       
       await _userCollection.document(user.uid).setData(userMap);
-      print("user name "+user.displayName);
       return user;
   }
 
@@ -79,7 +74,6 @@ class AuthService {
       FirebaseUser user=result.user;
       return _userFromFireBaseUser(user);
     } catch (e) {
-      print("registered?");
       print(e.toString());
       return null;
     }
@@ -88,7 +82,6 @@ class AuthService {
   //register hospital with email and password
   Future registerHospital(Map userMap) async {
     try {
-      print("inside register hospital");
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: userMap["email"], password: userMap["password"]);
       var hospital = new Hospital();

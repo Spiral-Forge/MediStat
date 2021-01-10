@@ -36,7 +36,6 @@ class _CallScreenState extends State<CallScreen> {
   @override
   void initState() {
     super.initState();
-    print("coming here in init state");
     addPostFrameCallback();
     initializeAgora();
   }
@@ -63,11 +62,7 @@ class _CallScreenState extends State<CallScreen> {
 
   addPostFrameCallback() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      print("inside addpost frme callback 1st line");
-      //final user= Provider.of<User>(context);
       var userProvider = Provider.of<User>(context, listen: false);
-      print("user provider");
-      print(userProvider);
       callStreamSubscription = callMethods
           .callStream(uid: userProvider.uid)
           .listen((DocumentSnapshot ds) {
